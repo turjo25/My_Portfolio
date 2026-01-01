@@ -95,8 +95,7 @@ export default function Footer() {
             variants={itemVariants}
             className="text-gray-300 max-w-3xl mx-auto text-lg font-light leading-relaxed"
           >
-            I'm always open to discussing new projects, creative ideas,
-            or opportunities to be part of your vision.
+            I am always open to discussing new projects, creative ideas,or opportunities to be part of your vision.
           </motion.p>
         </motion.div>
 
