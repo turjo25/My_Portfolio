@@ -84,7 +84,7 @@ export const EDUCATION: Education[] = [
   },
   {
     degree: "HSC in Science",
-    institution: "Faridpur Zilla School",
+    institution: "Government Rajendra College",
     period: "Jan 2018 – Jan 2021",
     grade: "GPA: 5.00 / 5.00",
   },
@@ -99,6 +99,7 @@ export const NAV_LINKS = [
   { name: "Education", href: "#education" },
   { name: "Contact", href: "#contact" },
 ] as const;
+
 
 
 
