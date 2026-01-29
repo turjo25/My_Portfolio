@@ -18,7 +18,7 @@ export const CONTACT_INFO: ContactInfo = {
 
 // About Section Content
 export const ABOUT_TEXT =
-  "Software Engineering student with strong problem-solving abilities (1000+ coding problems solved) and hands-on experience in full-stack development using Django...";
+  "Software Engineering student with strong problem-solving abilities (1000+ coding problems solved) and hands-on experience in full-stack development using Django, React. Passionate about building efficient, scalable web applications with clean code and best practices.";
 
 // Skills Categories
 export const SKILL_CATEGORIES: SkillCategory[] = [
@@ -71,6 +71,14 @@ export const PROJECTS: Project[] = [
       "An e-commerce shopping cart application with full CRUD functionality. Built with PHP and MySQL, featuring product management and cart operations.",
     techStack: ["PHP", "MySQL", "HTML", "CSS"],
     githubLink: "https://github.com/turjo25/ShoppingCart_PHP-CRUD.git",
+  },
+  {
+    title: "Royal Shop",
+    description:
+      "E-Shop is a Django-based single-vendor e-commerce platform featuring product management, cart and order processing, and secure SSLCommerz payment integration. It includes user authentication (manual & Google OAuth), product reviews, email order notifications, and an admin dashboard for inventory and order control—built with Django, SQLite, and modern web technologies.",
+    techStack: ["Django", "SQLite", "HTML", "CSS"],
+    githubLink: "https://github.com/turjo25/Royal_Shop.git",
+    liveLink: "https://royal-shop-uf36.onrender.com",
   },
 ];
 
