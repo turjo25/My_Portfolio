@@ -11,7 +11,7 @@ export const PERSONAL_INFO = {
 export const CONTACT_INFO: ContactInfo = {
   email: "mdshardulrahmanturjoofficial@gmail.com",
   phone: "+8801881566366",
-  location: "North Alipur, Faridpur",
+  location: "Mirupur 10, Dhaka, Bangladesh",
   linkedin: "https://www.linkedin.com/in/srturjo25/",
   github: "https://github.com/turjo25",
 };
