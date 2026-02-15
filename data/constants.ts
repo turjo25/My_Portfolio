@@ -12,13 +12,13 @@ export const CONTACT_INFO: ContactInfo = {
   email: "mdshardulrahmanturjoofficial@gmail.com",
   phone: "+8801881566366",
   location: "North Alipur, Faridpur",
-  linkedin: "https://www.linkedin.com/in/md-shardul-rahman-turjo-844a2a2a7/",
+  linkedin: "https://www.linkedin.com/in/srturjo25/",
   github: "https://github.com/turjo25",
 };
 
 // About Section Content
 export const ABOUT_TEXT =
-  "Software Engineering student with strong problem-solving abilities (1000+ coding problems solved) and hands-on experience in full-stack development using Django, React. Passionate about building efficient, scalable web applications with clean code and best practices.";
+  "Software Engineering student with strong problem-solving abilities (500+ coding problems solved) and hands-on experience in full-stack development using Django, React. Passionate about building efficient, scalable web applications with clean code and best practices.";
 
 // Skills Categories
 export const SKILL_CATEGORIES: SkillCategory[] = [
@@ -51,6 +51,14 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 // Projects Data
 export const PROJECTS: Project[] = [
   {
+    title: "Royal Shop",
+    description:
+      "E-Shop is a Django-based single-vendor e-commerce platform featuring product management, cart and order processing, and secure SSLCommerz payment integration. It includes user authentication (manual & Google OAuth), product reviews, email order notifications, and an admin dashboard for inventory and order control—built with Django, SQLite, and modern web technologies.",
+    techStack: ["Django", "SQLite", "HTML", "CSS"],
+    githubLink: "https://github.com/turjo25/Royal_Shop.git",
+    liveLink: "https://royal-shop-uf36.onrender.com",
+  },
+  {
     title: "To-Do Web App",
     description:
       "A full-featured to-do application built with Django backend and SQLite database. Features user authentication, task management, and a clean, responsive UI.",
@@ -73,12 +81,28 @@ export const PROJECTS: Project[] = [
     githubLink: "https://github.com/turjo25/ShoppingCart_PHP-CRUD.git",
   },
   {
-    title: "Royal Shop",
+    title: "WeatherFlow",
     description:
-      "E-Shop is a Django-based single-vendor e-commerce platform featuring product management, cart and order processing, and secure SSLCommerz payment integration. It includes user authentication (manual & Google OAuth), product reviews, email order notifications, and an admin dashboard for inventory and order control—built with Django, SQLite, and modern web technologies.",
-    techStack: ["Django", "SQLite", "HTML", "CSS"],
-    githubLink: "https://github.com/turjo25/Royal_Shop.git",
-    liveLink: "https://royal-shop-uf36.onrender.com",
+      "WeatherFlow is a Django-based weather application that provides real-time weather information using external weather APIs. It allows users to search for cities and view current temperature, weather conditions, humidity, and wind details through a clean and responsive interface—built with Django, API integration, and modern web technologies.",
+    techStack: ["React","Weather API", "HTML", "CSS"],
+    githubLink: "https://github.com/turjo25/WeatherFlow.git",
+    liveLink: "https://weather-flow-nine.vercel.app/",
+  },
+  {
+    title: "AI Agent",
+    description:
+      "A Django-based AI shopping assistant that enables interactive customer conversations using the OpenRouter AI API, complete with session history and responsive UI.",
+    techStack: ["Django", "Python", "HTML", "Tailwind CSS"],
+    githubLink: "https://github.com/turjo25/AI_AGENT.git",
+    // liveLink: "https://ai-agent-7890.onrender.com",
+  },
+  {
+    title: "LearningHub",
+    description:
+      "LearningHub is a full-stack Learning Management System combining Django’s backend (REST APIs, authentication, role-based access) with a React-based frontend. It supports teacher workflows like course and assignment creation, and student workflows such as browsing courses, enrolling in lessons, and submitting assignments — demonstrating a complete ed-tech solution from database to UI.",
+    techStack: ["Django", "Django REST Framework (DRF)","React","JWT / Session-based Authentication", "SQLite", "Tailwind CSS"],
+    githubLink: "https://github.com/turjo25/LearningHub.git",
+    // liveLink: "https://personal-portfolio-turjo25.vercel.app",
   },
 ];
 
@@ -88,7 +112,7 @@ export const EDUCATION: Education[] = [
     degree: "B.Sc. in Software Engineering",
     institution: "Daffodil International University",
     period: "Jan 2023 – Present",
-    grade: "CGPA: 3.85 / 4.00",
+    grade: "CGPA: 3.87 / 4.00",
   },
   {
     degree: "HSC in Science",
