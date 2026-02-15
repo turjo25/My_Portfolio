@@ -4,7 +4,7 @@ import { Project, SkillCategory, Education, ContactInfo } from "@/types";
 export const PERSONAL_INFO = {
   name: "MD. SHARDUL RAHMAN TURJO",
   role: "Software Engineering Student | Full-Stack Developer",
-  tagline: "Problem solver with 1000+ coding challenges solved. Building modern web applications with Django & React.",
+  tagline: "Problem solver with 500+ coding challenges solved. Building modern web applications with Django & React.",
 } as const;
 
 // Contact Information
