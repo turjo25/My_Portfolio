@@ -62,7 +62,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <motion.div
       variants={cardVariants}
-      className="group glass rounded-2xl p-7 hover:bg-white/10 transition-all duration-500 flex flex-col relative overflow-hidden"
+      className="group glass rounded-2xl p-6 md:p-7 hover:bg-white/10 transition-all duration-500 flex flex-col relative overflow-hidden h-full"
       whileHover={{ scale: 1.04, y: -8 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
@@ -93,7 +93,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         {/* Description */}
         <motion.p
           variants={itemVariants}
-          className="text-gray-300 text-base leading-relaxed mb-6 flex-grow font-light"
+          className="text-gray-300 text-sm md:text-base leading-relaxed mb-6 flex-grow font-light line-clamp-4"
         >
           {project.description}
         </motion.p>

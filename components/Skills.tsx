@@ -74,13 +74,13 @@ export default function Skills() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px", amount: 0.2 }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
       >
         {SKILL_CATEGORIES.map((category, index) => (
           <motion.div
             key={category.name}
             variants={cardVariants}
-            className="glass rounded-2xl p-7 hover:bg-white/10 transition-all duration-500 relative overflow-hidden group"
+            className="glass rounded-2xl p-6 md:p-7 hover:bg-white/10 transition-all duration-500 relative overflow-hidden group"
             whileHover={{ scale: 1.03, y: -8 }}
             custom={index}
           >

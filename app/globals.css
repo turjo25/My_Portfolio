@@ -20,6 +20,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px; /* Account for fixed navbar */
+  overflow-x: hidden;
 }
 
 body {
@@ -33,6 +34,7 @@ body {
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   letter-spacing: -0.011em;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* Typography improvements */

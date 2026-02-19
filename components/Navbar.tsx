@@ -81,7 +81,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -101,14 +101,18 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="md:hidden glass-strong border-t border-white/10"
+            className="md:hidden glass-strong border-t border-white/10 overflow-hidden"
           >
-            <div className="px-6 py-6 space-y-3">
+            <div className="px-6 py-6 space-y-4">
               {NAV_LINKS.map((link, index) => (
-                <motion.button
+                <motion.a
                   key={link.name}
-                  onClick={() => handleNavClick(link.href)}
-                  className="block w-full text-left text-gray-300 hover:text-white transition-colors duration-300 py-3 px-2 rounded-lg hover:bg-white/5 font-medium tracking-wide"
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(link.href);
+                  }}
+                  className="block w-full text-left text-gray-300 hover:text-white transition-colors duration-300 py-4 px-4 rounded-lg hover:bg-white/5 font-medium tracking-wide border-b border-white/5 last:border-0 cursor-pointer"
                   initial={{ x: -30, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ 
@@ -118,7 +122,7 @@ export default function Navbar() {
                   }}
                 >
                   {link.name}
-                </motion.button>
+                </motion.a>
               ))}
             </div>
           </motion.div>

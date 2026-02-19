@@ -101,7 +101,7 @@ export default function Hero() {
         {/* Main Heading */}
         <motion.div className="space-y-6">
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight px-2"
             variants={itemVariants}
             itemProp="name"
           >
@@ -120,13 +120,13 @@ export default function Hero() {
           </motion.h1>
 
           <motion.div variants={itemVariants}>
-            <p className="text-2xl md:text-3xl lg:text-4xl text-gray-300 font-light tracking-tight">
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-300 font-light tracking-tight px-4">
               {PERSONAL_INFO.role}
             </p>
           </motion.div>
 
           <motion.p
-            className="text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light px-4"
             variants={itemVariants}
           >
             {PERSONAL_INFO.tagline}
@@ -171,7 +171,7 @@ export default function Hero() {
 
       {/* Scroll Indicator - positioned relative to section */}
       <motion.div
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-12 inset-x-0 flex justify-center z-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}

@@ -93,7 +93,7 @@ export default function Education() {
           <motion.div
             key={index}
             variants={itemVariants}
-            className="relative glass rounded-2xl p-7 hover:bg-white/10 transition-all duration-500 group overflow-hidden"
+            className="relative glass rounded-2xl p-6 md:p-7 hover:bg-white/10 transition-all duration-500 group overflow-hidden"
             whileHover={{ scale: 1.02, x: 12, y: -4 }}
           >
             {/* Gradient accent on hover */}
@@ -152,7 +152,7 @@ export default function Education() {
             {/* Timeline connector (except for last item) */}
             {index < EDUCATION.length - 1 && (
               <motion.div
-                className="absolute left-9 top-24 w-0.5 h-8 bg-gradient-to-b from-blue-500/40 to-blue-500/20"
+                className="absolute left-8 md:left-9 top-24 w-0.5 h-8 bg-gradient-to-b from-blue-500/40 to-blue-500/20"
                 initial={{ scaleY: 0, originY: 0 }}
                 whileInView={{ scaleY: 1 }}
                 viewport={{ once: true, amount: 0.5 }}

@@ -109,7 +109,7 @@ export default function Footer() {
           <motion.a
             variants={buttonVariants}
             href={`mailto:${CONTACT_INFO.email}`}
-            className="group glass rounded-xl px-6 py-3 border border-white/10 transition-all duration-500 flex items-center gap-3 relative overflow-hidden hover:bg-white/10"
+            className="group glass rounded-xl px-6 py-4 md:py-3 border border-white/10 transition-all duration-500 flex items-center gap-3 relative overflow-hidden hover:bg-white/10 min-h-[44px]"
             whileHover={reduceMotion ? {} : { scale: 1.05, y: -4 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
@@ -125,7 +125,7 @@ export default function Footer() {
             variants={buttonVariants}
             href={`tel:${CONTACT_INFO.phone}`}
             title="Call (mobile devices)"
-            className="group glass rounded-xl px-6 py-3 border border-white/10 transition-all duration-500 flex items-center gap-3 relative overflow-hidden hover:bg-white/10"
+            className="group glass rounded-xl px-6 py-4 md:py-3 border border-white/10 transition-all duration-500 flex items-center gap-3 relative overflow-hidden hover:bg-white/10 min-h-[44px]"
             whileHover={reduceMotion ? {} : { scale: 1.05, y: -4 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
@@ -144,7 +144,7 @@ export default function Footer() {
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="group glass rounded-xl px-6 py-3 border border-white/10 transition-all duration-500 flex items-center gap-3 relative overflow-hidden hover:bg-white/10"
+            className="group glass rounded-xl px-6 py-4 md:py-3 border border-white/10 transition-all duration-500 flex items-center gap-3 relative overflow-hidden hover:bg-white/10 min-h-[44px]"
             whileHover={reduceMotion ? {} : { scale: 1.05, y: -4 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >

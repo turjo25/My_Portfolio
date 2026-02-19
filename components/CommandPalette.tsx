@@ -247,31 +247,7 @@ export default function CommandPalette() {
         )}
       </AnimatePresence>
 
-      {/* Keyboard Shortcut Button */}
-      <motion.button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 glass rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        title="Open Command Palette (Cmd+K or Ctrl+K)"
-      >
-        <div className="relative">
-          <Search size={20} className="text-white" />
-          {/* Pulse effect */}
-          <motion.div
-            className="absolute inset-0 rounded-full bg-blue-500/30"
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.5, 0, 0.5],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 2,
-              ease: "easeInOut",
-            }}
-          />
-        </div>
-      </motion.button>
+
     </>
   );
 }

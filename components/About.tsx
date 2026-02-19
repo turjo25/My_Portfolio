@@ -96,7 +96,7 @@ export default function About() {
           {/* Profile Summary */}
           <motion.div
             variants={itemVariants}
-            className="glass rounded-2xl p-8 md:p-10 gradient-accent relative overflow-hidden"
+            className="glass rounded-2xl p-6 md:p-10 gradient-accent relative overflow-hidden"
           >
             <motion.div
               className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
