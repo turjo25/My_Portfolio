@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/data/constants";
@@ -14,8 +15,11 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Handle scroll effect
+  const [mounted, setMounted] = useState(false);
+
+  // Handle scroll effect & mounting
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -93,40 +97,66 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl md:hidden flex flex-col pt-24 px-6 overflow-y-auto"
-          >
-            <nav className="flex flex-col space-y-2">
-              {NAV_LINKS.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(link.href);
-                  }}
-                  className="block w-full text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 py-4 px-4 rounded-xl transition-all duration-300 border-b border-white/5 last:border-0"
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{
-                    delay: 0.1 + index * 0.05,
-                    duration: 0.3
-                  }}
+
+
+      {/* Mobile Menu Overlay & Drawer - Portal to Body */}
+      {mounted && createPortal(
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <>
+              {/* Backdrop - blurred and dark */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm md:hidden"
+                onClick={() => setMobileMenuOpen(false)}
+              />
+
+              {/* Side Drawer Panel */}
+              <motion.div
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="fixed top-0 right-0 z-[101] h-full w-[70%] max-w-sm bg-black/95 border-l border-white/10 shadow-2xl md:hidden flex flex-col pt-24 px-6 overflow-y-auto"
+              >
+                {/* Close Button inside Drawer */}
+                <button 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="absolute top-6 right-6 p-2 text-white/50 hover:text-white transition-colors"
                 >
-                  {link.name}
-                </motion.a>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                  <X size={24} />
+                </button>
+
+                <div className="flex flex-col space-y-2">
+                  {NAV_LINKS.map((link, index) => (
+                    <motion.a
+                      key={link.name}
+                      href={link.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick(link.href);
+                      }}
+                      className="block w-full text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 py-4 px-4 rounded-xl transition-all duration-300 border-b border-white/5 last:border-0"
+                      initial={{ x: 20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{
+                        delay: 0.1 + index * 0.05,
+                        duration: 0.3
+                      }}
+                    >
+                      {link.name}
+                    </motion.a>
+                  ))}
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </motion.nav>
   );
 }
