@@ -93,17 +93,17 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="md:hidden glass-strong border-t border-white/10 overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl md:hidden flex flex-col pt-24 px-6 overflow-y-auto"
           >
-            <div className="px-6 py-6 space-y-4">
+            <nav className="flex flex-col space-y-2">
               {NAV_LINKS.map((link, index) => (
                 <motion.a
                   key={link.name}
@@ -112,19 +112,18 @@ export default function Navbar() {
                     e.preventDefault();
                     handleNavClick(link.href);
                   }}
-                  className="block w-full text-left text-gray-300 hover:text-white transition-colors duration-300 py-4 px-4 rounded-lg hover:bg-white/5 font-medium tracking-wide border-b border-white/5 last:border-0 cursor-pointer"
-                  initial={{ x: -30, opacity: 0 }}
+                  className="block w-full text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 py-4 px-4 rounded-xl transition-all duration-300 border-b border-white/5 last:border-0"
+                  initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  transition={{ 
-                    delay: index * 0.08,
-                    duration: 0.4,
-                    ease: [0.25, 0.1, 0.25, 1]
+                  transition={{
+                    delay: 0.1 + index * 0.05,
+                    duration: 0.3
                   }}
                 >
                   {link.name}
                 </motion.a>
               ))}
-            </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

@@ -83,7 +83,7 @@ export default function Hero() {
   };
 
   return (
-    <SectionWrapper id="home" className="flex items-center justify-center relative">
+    <SectionWrapper id="home" className="flex flex-col items-center justify-center relative min-h-screen">
       {/* Gradient background accent */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 pointer-events-none"
@@ -136,12 +136,12 @@ export default function Hero() {
         {/* CTA Buttons */}
         <motion.div
           variants={buttonContainerVariants}
-          className="flex flex-col sm:flex-row gap-5 justify-center items-center pt-4"
+          className="flex flex-col lg:flex-row gap-5 justify-center items-center pt-4 w-full px-4"
         >
           <motion.button
             variants={buttonVariants}
             onClick={() => scrollToSection("#projects")}
-            className="group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white rounded-xl font-semibold transition-all duration-500 flex items-center gap-3 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40"
+            className="w-full lg:w-auto h-14 group relative px-8 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white rounded-xl font-semibold transition-all duration-500 flex items-center justify-center gap-3 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -158,7 +158,7 @@ export default function Hero() {
           <motion.button
             variants={buttonVariants}
             onClick={() => scrollToSection("#contact")}
-            className="px-10 py-4 glass border border-white/20 hover:border-white/30 text-white rounded-xl font-semibold transition-all duration-500 hover:bg-white/10 tracking-wide"
+            className="w-full lg:w-auto h-14 px-8 glass border border-white/20 hover:border-white/30 text-white rounded-xl font-semibold transition-all duration-500 hover:bg-white/10 tracking-wide flex items-center justify-center"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -172,7 +172,7 @@ export default function Hero() {
             href="https://drive.google.com/drive/folders/1itsaWvQyyPWGhGWUMb7wZgLCN-S25r3I?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white rounded-xl font-semibold transition-all duration-500 flex items-center gap-3 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40"
+            className="w-full lg:w-auto h-14 group relative px-8 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white rounded-xl font-semibold transition-all duration-500 flex items-center justify-center gap-3 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -186,7 +186,7 @@ export default function Hero() {
 
       {/* Scroll Indicator - positioned relative to section */}
       <motion.div
-        className="absolute bottom-12 inset-x-0 flex justify-center z-10"
+        className="w-full flex justify-center mt-12 md:absolute md:bottom-12 md:left-0 md:right-0 md:mt-0 z-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}

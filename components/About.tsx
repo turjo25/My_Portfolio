@@ -90,7 +90,7 @@ export default function About() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px", amount: 0.3 }}
+          viewport={{ once: true, margin: "-50px 0px" }}
           className="space-y-10"
         >
           {/* Profile Summary */}
