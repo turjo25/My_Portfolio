@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Code2 } from "lucide-react";
+import { ArrowDown, Code2, FileText } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/constants";
 import SectionWrapper from "./SectionWrapper";
 
@@ -166,6 +166,21 @@ export default function Hero() {
           >
             Contact Me
           </motion.button>
+          
+          <motion.a
+            variants={buttonVariants}
+            href="https://drive.google.com/drive/folders/1itsaWvQyyPWGhGWUMb7wZgLCN-S25r3I?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white rounded-xl font-semibold transition-all duration-500 flex items-center gap-3 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            aria-label="View Resume"
+          >
+            <FileText size={22} />
+            <span className="tracking-wide">Resume</span>
+          </motion.a>
         </motion.div>
       </motion.div>
 
