@@ -28,8 +28,8 @@ export default function FloatingSocialDock() {
       icon: <Linkedin size={22} />,
       href: CONTACT_INFO.linkedin || "#",
       label: "LinkedIn",
-      color: "text-blue-400",
-      hoverColor: "hover:bg-blue-500/20",
+      color: "text-red-400",
+      hoverColor: "hover:bg-red-500/20",
     },
     {
       id: "github",
@@ -60,8 +60,8 @@ export default function FloatingSocialDock() {
       icon: <MapPin size={22} />,
       href: `https://maps.google.com/?q=${encodeURIComponent(CONTACT_INFO.location)}`,
       label: "Location",
-      color: "text-blue-400",
-      hoverColor: "hover:bg-blue-500/20",
+      color: "text-red-400",
+      hoverColor: "hover:bg-red-500/20",
     },
   ];
 
@@ -148,7 +148,7 @@ export default function FloatingSocialDock() {
         className={`
           glass rounded-full p-4 shadow-lg backdrop-blur-md border border-white/10
           transition-all duration-300 relative overflow-hidden
-          ${isExpanded ? "bg-blue-500/20 hover:bg-blue-500/30" : "hover:bg-white/10"}
+          ${isExpanded ? "bg-red-500/20 hover:bg-red-500/30" : "hover:bg-white/10"}
         `}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -168,7 +168,7 @@ export default function FloatingSocialDock() {
         {/* Pulse effect when closed */}
         {!isExpanded && (
           <motion.div
-            className="absolute inset-0 rounded-full bg-blue-500/20"
+            className="absolute inset-0 rounded-full bg-red-500/20"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.5, 0, 0.5],
@@ -187,7 +187,7 @@ export default function FloatingSocialDock() {
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="absolute -top-2 -right-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full w-6 h-6 flex items-center justify-center text-white text-xs font-bold shadow-lg"
+          className="absolute -top-2 -right-2 bg-gradient-to-r from-red-500 to-orange-500 rounded-full w-6 h-6 flex items-center justify-center text-white text-xs font-bold shadow-lg"
         >
           {socialLinks.length}
         </motion.div>

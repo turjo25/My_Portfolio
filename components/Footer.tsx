@@ -1,206 +1,148 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { Mail, Phone, Linkedin, Github, MapPin } from "lucide-react";
+import { Mail, Phone, Linkedin, Github, MapPin, ArrowUpRight } from "lucide-react";
 import { CONTACT_INFO } from "@/data/constants";
 
-/**
- * Footer / Contact Section
- * Production-ready, accessible, optimized
- */
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const reduceMotion = useReducedMotion();
 
-  /* Common viewport animation props */
-  const viewProps = {
-    initial: "hidden",
-    whileInView: "visible",
-    viewport: { once: true, amount: 0.3 },
-  };
+  const vp = { initial: "hidden", whileInView: "visible", viewport: { once: true, amount: 0.25 } };
 
-  /* Animation Variants */
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: reduceMotion
-        ? { duration: 0 }
-        : { staggerChildren: 0.15, delayChildren: 0.1 },
-    },
+    visible: { opacity: 1, transition: reduceMotion ? { duration: 0 } : { staggerChildren: 0.13, delayChildren: 0.1 } },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: reduceMotion ? 0 : 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: reduceMotion
-        ? { duration: 0 }
-        : { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] },
-    },
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 36 },
+    visible: { opacity: 1, y: 0, transition: reduceMotion ? { duration: 0 } : { duration: 0.75, ease: [0.25, 0.1, 0.25, 1] } },
   };
 
-  const buttonContainerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: reduceMotion
-        ? { duration: 0 }
-        : { staggerChildren: 0.1, delayChildren: 0.2 },
-    },
+  const btnVariants = {
+    hidden: { opacity: 0, scale: reduceMotion ? 1 : 0.9, y: reduceMotion ? 0 : 18 },
+    visible: { opacity: 1, scale: 1, y: 0, transition: reduceMotion ? { duration: 0 } : { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] } },
   };
 
-  const buttonVariants = {
-    hidden: { opacity: 0, scale: reduceMotion ? 1 : 0.9, y: reduceMotion ? 0 : 20 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: reduceMotion
-        ? { duration: 0 }
-        : { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+  const contactLinks = [
+    {
+      href: `mailto:${CONTACT_INFO.email}`,
+      icon: Mail, label: "Send Email", sub: CONTACT_INFO.email,
+      color: "text-red-300", iconBg: "bg-red-500/12 border-red-500/25 hover:bg-red-500/22 hover:border-red-400/45",
+      glow: "from-red-500/8",
     },
-  };
+    {
+      href: `tel:${CONTACT_INFO.phone}`,
+      icon: Phone, label: "Call Me", sub: CONTACT_INFO.phone,
+      color: "text-rose-300", iconBg: "bg-rose-500/12 border-rose-500/25 hover:bg-rose-500/22 hover:border-rose-400/45",
+      glow: "from-rose-500/8",
+    },
+    {
+      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONTACT_INFO.location)}`,
+      icon: MapPin, label: CONTACT_INFO.location, sub: "View on Maps",
+      color: "text-orange-300", iconBg: "bg-orange-500/12 border-orange-500/25 hover:bg-orange-500/22 hover:border-orange-400/45",
+      glow: "from-orange-500/8", external: true,
+    },
+  ];
+
+  const socialLinks = [
+    {
+      href: CONTACT_INFO.linkedin!, icon: Linkedin, label: "LinkedIn",
+      color: "text-red-300", bg: "bg-red-500/12 border-red-500/25 hover:bg-red-500/22 hover:border-red-400/45",
+    },
+    {
+      href: CONTACT_INFO.github!, icon: Github, label: "GitHub",
+      color: "text-gray-300", bg: "bg-white/6 border-white/12 hover:bg-white/12 hover:border-white/22",
+    },
+  ];
 
   return (
-    <footer
-      id="contact"
-      className="relative border-t border-white/10 glass-strong"
-    >
-      {/* Gradient background accent */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-b from-blue-500/5 via-transparent to-purple-500/5 pointer-events-none"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={reduceMotion ? { duration: 0 } : { duration: 1.2 }}
-      />
+    <footer id="contact" className="relative border-t border-white/8">
+      {/* Gradient backdrop */}
+      <div className="absolute inset-0 bg-gradient-to-b from-red-500/4 via-transparent to-orange-500/4 pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-red-500/5 rounded-full blur-[100px] pointer-events-none" />
 
       <motion.div
-        {...viewProps}
+        {...vp}
         variants={containerVariants}
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+        className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
       >
         {/* Header */}
-        <motion.div variants={itemVariants} className="text-center space-y-6 mb-12">
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
-          >
-            <span className="text-gradient-blue">Get In Touch</span>
-          </motion.h2>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-gray-300 max-w-3xl mx-auto text-lg font-light leading-relaxed"
-          >
-            I am always open to discussing new projects, creative ideas,or opportunities to be part of your vision.
-          </motion.p>
+        <motion.div variants={itemVariants} className="text-center mb-14">
+          <p className="text-red-400 text-xs font-bold uppercase tracking-[0.2em] mb-4">Get In Touch</p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-5">
+            <span className="text-gradient-primary">Let&apos;s Work Together</span>
+          </h2>
+          <p className="text-gray-400 max-w-xl mx-auto text-base md:text-lg leading-relaxed">
+            I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+          </p>
         </motion.div>
 
-        {/* Contact Buttons */}
+        {/* Contact cards */}
         <motion.div
-          {...viewProps}
-          variants={buttonContainerVariants}
-          className="flex flex-wrap justify-center gap-5 mb-12"
+          {...vp}
+          variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.15 } } }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10"
         >
-          {/* Email */}
-          <motion.a
-            variants={buttonVariants}
-            href={`mailto:${CONTACT_INFO.email}`}
-            className="group glass rounded-xl px-6 py-4 md:py-3 border border-white/10 transition-all duration-500 flex items-center gap-3 relative overflow-hidden hover:bg-white/10 min-h-[44px]"
-            whileHover={reduceMotion ? {} : { scale: 1.05, y: -4 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <Mail size={20} className="text-blue-400 relative z-10" />
-            <span className="text-gray-200 font-medium relative z-10">
-              Email
-            </span>
-          </motion.a>
-
-          {/* Phone */}
-          <motion.a
-            variants={buttonVariants}
-            href={`tel:${CONTACT_INFO.phone}`}
-            title="Call (mobile devices)"
-            className="group glass rounded-xl px-6 py-4 md:py-3 border border-white/10 transition-all duration-500 flex items-center gap-3 relative overflow-hidden hover:bg-white/10 min-h-[44px]"
-            whileHover={reduceMotion ? {} : { scale: 1.05, y: -4 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <Phone size={20} className="text-green-400 relative z-10" />
-            <span className="text-gray-200 font-medium relative z-10">
-              Call
-            </span>
-          </motion.a>
-
-          {/* Location */}
-          <motion.a
-            variants={buttonVariants}
-            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-              CONTACT_INFO.location
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group glass rounded-xl px-6 py-4 md:py-3 border border-white/10 transition-all duration-500 flex items-center gap-3 relative overflow-hidden hover:bg-white/10 min-h-[44px]"
-            whileHover={reduceMotion ? {} : { scale: 1.05, y: -4 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <MapPin size={20} className="text-purple-400 relative z-10" />
-            <span className="text-gray-200 font-medium relative z-10">
-              Location
-            </span>
-          </motion.a>
+          {contactLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <motion.a
+                key={link.label}
+                variants={btnVariants}
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                className={`group glass rounded-2xl p-5 border transition-all duration-400 flex items-center gap-4 relative overflow-hidden ${link.iconBg}`}
+                whileHover={reduceMotion ? {} : { scale: 1.03, y: -4 }}
+                transition={{ type: "spring", stiffness: 320, damping: 18 }}
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${link.glow} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400`} />
+                <div className={`shrink-0 p-3 rounded-xl border ${link.iconBg} relative z-10`}>
+                  <Icon size={20} className={link.color} />
+                </div>
+                <div className="relative z-10 min-w-0">
+                  <p className="text-gray-100 font-semibold text-sm truncate">{link.label}</p>
+                  <p className="text-gray-500 text-xs truncate">{link.sub}</p>
+                </div>
+                <ArrowUpRight size={15} className="text-gray-600 group-hover:text-gray-300 transition-colors duration-300 relative z-10 ml-auto shrink-0" />
+              </motion.a>
+            );
+          })}
         </motion.div>
 
-        {/* Social Links */}
-        <motion.div
-          {...viewProps}
-          variants={buttonContainerVariants}
-          className="flex justify-center gap-6 mb-12"
-        >
-          {CONTACT_INFO.linkedin && (
-            <motion.a
-              variants={buttonVariants}
-              href={CONTACT_INFO.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="group p-4 glass border border-white/10 rounded-xl transition-all duration-500 relative overflow-hidden hover:bg-blue-500/20"
-              whileHover={reduceMotion ? {} : { scale: 1.15, rotate: 5, y: -4 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <Linkedin size={26} className="text-blue-400 relative z-10" />
-            </motion.a>
-          )}
-
-          {CONTACT_INFO.github && (
-            <motion.a
-              variants={buttonVariants}
-              href={CONTACT_INFO.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="group p-4 glass border border-white/10 rounded-xl transition-all duration-500 relative overflow-hidden hover:bg-gray-500/20"
-              whileHover={reduceMotion ? {} : { scale: 1.15, rotate: -5, y: -4 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <Github size={26} className="text-gray-400 relative z-10" />
-            </motion.a>
-          )}
+        {/* Social icons */}
+        <motion.div {...vp} variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }} className="flex justify-center gap-4 mb-14">
+          {socialLinks.map((s) => {
+            const Icon = s.icon;
+            return (
+              <motion.a
+                key={s.label}
+                variants={btnVariants}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className={`flex items-center gap-2.5 px-5 py-3 glass border rounded-xl transition-all duration-300 font-semibold text-sm ${s.bg} ${s.color}`}
+                whileHover={reduceMotion ? {} : { scale: 1.06, y: -3 }}
+                whileTap={{ scale: 0.96 }}
+              >
+                <Icon size={18} />
+                {s.label}
+              </motion.a>
+            );
+          })}
         </motion.div>
 
         {/* Copyright */}
         <motion.div
           variants={itemVariants}
-          className="text-center text-gray-400 text-sm border-t border-white/10 pt-10 font-light tracking-wide"
+          className="text-center text-gray-600 text-sm border-t border-white/8 pt-8 font-medium"
         >
-          © {currentYear} MD. SHARDUL RAHMAN TURJO. All rights reserved.
+          © {currentYear}{" "}
+          <span className="text-gray-400">MD. Shardul Rahman Turjo</span>
+          {" · "}All rights reserved.
         </motion.div>
       </motion.div>
     </footer>

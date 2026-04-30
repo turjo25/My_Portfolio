@@ -1,0 +1,67 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Ultra bright gradient for an intense shiny core -->
+    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#ffffff" />
+      <stop offset="30%" stopColor="#a5f3fc" />
+      <stop offset="60%" stopColor="#00d4ff" />
+      <stop offset="100%" stopColor="#0055ff" />
+    </linearGradient>
+
+    <!-- Super wide and intense diffuse glow -->
+    <filter id="glow-wide" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="32" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="blur" /> <!-- Double blur for extra intensity -->
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Tight, sharp glow to make edges look laser-like -->
+    <filter id="glow-tight" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Deep pitch background for maximum neon contrast -->
+  <rect width="512" height="512" rx="120" fill="#010611"/>
+
+  <!-- HEXAGON LAYER 1: The wide atmospheric neon aura -->
+  <path
+    d="M 256 50 L 435 153 L 435 359 L 256 462 L 77 359 L 77 153 Z"
+    stroke="url(#logo-grad)"
+    strokeWidth="24"
+    fill="rgba(0, 212, 255, 0.1)"
+    filter="url(#glow-wide)"
+  />
+  
+  <!-- HEXAGON LAYER 2: The sharp, hot-white shiny core edge -->
+  <path
+    d="M 256 50 L 435 153 L 435 359 L 256 462 L 77 359 L 77 153 Z"
+    stroke="#ffffff"
+    strokeWidth="4"
+    fill="none"
+    filter="url(#glow-tight)"
+    opacity="0.9"
+  />
+
+  <!-- T LAYER 1: Wide intense glowing body -->
+  <path
+    d="M 156 160 H 356 V 210 H 286 V 390 H 226 V 210 H 156 V 160 Z"
+    fill="url(#logo-grad)"
+    filter="url(#glow-wide)"
+  />
+
+  <!-- T LAYER 2: Hot bright shiny core overlay -->
+  <path
+    d="M 156 160 H 356 V 210 H 286 V 390 H 226 V 210 H 156 V 160 Z"
+    fill="#ffffff"
+    filter="url(#glow-tight)"
+    opacity="0.85"
+  />
+</svg>

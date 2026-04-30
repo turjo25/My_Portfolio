@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Stats from "@/components/Stats";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
@@ -16,7 +17,7 @@ import FloatingSocialDock from "@/components/FloatingSocialDock";
  */
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white overflow-x-hidden">
+    <main className="min-h-screen overflow-x-hidden pt-16 md:pt-20">
       {/* Navigation Bar */}
       <Navbar />
 
@@ -28,6 +29,9 @@ export default function Home() {
 
       {/* Hero Section */}
       <Hero />
+
+      {/* Stats / Achievements Strip */}
+      <Stats />
 
       {/* About Section */}
       <About />
@@ -46,4 +50,3 @@ export default function Home() {
     </main>
   );
 }
-

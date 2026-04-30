@@ -194,7 +194,7 @@ export default function CommandPalette() {
                               className={cn(
                                 "w-full flex items-center gap-3 px-4 py-3 text-left transition-colors",
                                 globalIndex === selectedIndex
-                                  ? "bg-blue-500/20 text-white"
+                                  ? "bg-red-500/20 text-white"
                                   : "text-gray-300 hover:bg-white/5"
                               )}
                               whileHover={{ x: 4 }}
@@ -203,7 +203,7 @@ export default function CommandPalette() {
                               <div className={cn(
                                 "p-2 rounded-lg",
                                 globalIndex === selectedIndex
-                                  ? "bg-blue-500/30"
+                                  ? "bg-red-500/30"
                                   : "bg-white/5"
                               )}>
                                 {command.icon}
@@ -213,7 +213,7 @@ export default function CommandPalette() {
                                 size={16}
                                 className={cn(
                                   "text-gray-400",
-                                  globalIndex === selectedIndex && "text-blue-400"
+                                  globalIndex === selectedIndex && "text-red-400"
                                 )}
                               />
                             </motion.button>

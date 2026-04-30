@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { PERSONAL_INFO, CONTACT_INFO } from "@/data/constants";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://your-portfolio.vercel.app";
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://your-portfolio.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -66,9 +74,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
   manifest: "/site.webmanifest",
   alternates: {
@@ -91,10 +99,7 @@ const jsonLd = {
     addressLocality: CONTACT_INFO.location,
   },
   url: siteUrl,
-  sameAs: [
-    CONTACT_INFO.linkedin,
-    CONTACT_INFO.github,
-  ].filter(Boolean),
+  sameAs: [CONTACT_INFO.linkedin, CONTACT_INFO.github].filter(Boolean),
   alumniOf: {
     "@type": "EducationalOrganization",
     name: "Daffodil International University",
@@ -116,7 +121,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${inter.variable}`}>
       <head>
         {/* Structured Data */}
         <script
@@ -124,8 +129,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className={`antialiased ${inter.className}`}>{children}</body>
     </html>
   );
 }
-

@@ -5,117 +5,83 @@ import { SKILL_CATEGORIES } from "@/data/constants";
 import SectionWrapper from "./SectionWrapper";
 import SkillBadge from "./SkillBadge";
 
-/**
- * Skills Section Component
- * Display categorized skills in animated cards
- */
+const CATEGORY_ACCENTS: Record<string, { icon: string; border: string; glow: string; bar: string }> = {
+  "Programming Languages": { icon: "💻", border: "border-red-500/20", glow: "from-red-500/8", bar: "bg-red-500" },
+  "Frontend":              { icon: "🎨", border: "border-rose-500/20",   glow: "from-rose-500/8",   bar: "bg-rose-500" },
+  "Backend":               { icon: "⚙️", border: "border-orange-500/20",glow: "from-orange-500/8",bar: "bg-orange-500" },
+  "Databases":             { icon: "🗄️", border: "border-red-500/20",   glow: "from-red-500/8",   bar: "bg-red-500" },
+  "Tools":                 { icon: "🔧", border: "border-gray-500/20",   glow: "from-gray-500/8",   bar: "bg-gray-500" },
+  "Competitive Programming":{ icon: "🏆", border: "border-amber-500/20", glow: "from-amber-500/8",  bar: "bg-amber-500" },
+};
+
 export default function Skills() {
-  // Container variants with enhanced stagger
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
   };
 
-  // Card variants with scale and rotation
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 50,
-      scale: 0.9,
-      rotateX: -15
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      rotateX: 0,
-      transition: {
-        duration: 0.7,
-        ease: [0.25, 0.1, 0.25, 1],
-      },
-    },
-  };
-
-  // Skills badge container variants
-  const badgeContainerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.3,
-      },
-    },
+    hidden: { opacity: 0, y: 44, scale: 0.92 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.65, ease: [0.25, 0.1, 0.25, 1] } },
   };
 
   return (
     <SectionWrapper id="skills">
-      {/* Section Title */}
       <motion.h2
-        className="text-4xl md:text-5xl lg:text-6xl font-bold mb-16 md:mb-20 text-center tracking-tight"
-        initial={{ opacity: 0, y: 40 }}
+        className="text-4xl md:text-5xl lg:text-6xl font-bold mb-14 text-center tracking-tight"
+        initial={{ opacity: 0, y: 36 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1] }}
       >
-        <span className="text-gradient-blue">
-          Skills
-        </span>
+        <span className="text-gradient-primary">Skills</span>
       </motion.h2>
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px", amount: 0.2 }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
+        viewport={{ once: true, margin: "-80px", amount: 0.15 }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
       >
-        {SKILL_CATEGORIES.map((category, index) => (
-          <motion.div
-            key={category.name}
-            variants={cardVariants}
-            className="glass rounded-2xl p-6 md:p-7 hover:bg-white/10 transition-all duration-500 relative overflow-hidden group"
-            whileHover={{ scale: 1.03, y: -8 }}
-            custom={index}
-          >
-            {/* Gradient accent on hover */}
+        {SKILL_CATEGORIES.map((category, index) => {
+          const accent = CATEGORY_ACCENTS[category.name] ?? {
+            icon: "⚡", border: "border-white/10", glow: "from-red-500/8", bar: "bg-red-500",
+          };
+          return (
             <motion.div
-              className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
-            />
-            <motion.h3
-              className="text-xl font-semibold text-white mb-5 tracking-tight relative z-10"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 + 0.2, duration: 0.5 }}
+              key={category.name}
+              variants={cardVariants}
+              className={`glass rounded-2xl p-6 md:p-7 border ${accent.border} hover:border-opacity-60 transition-all duration-400 relative overflow-hidden group`}
+              whileHover={{ scale: 1.03, y: -7 }}
             >
-              {category.name}
-            </motion.h3>
-            <motion.div
-              variants={badgeContainerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="flex flex-wrap gap-2.5 relative z-10"
-            >
-              {category.skills.map((skill) => (
-                <SkillBadge key={skill} skill={skill} />
-              ))}
+              {/* Top accent bar */}
+              <div className={`absolute top-0 left-0 right-0 h-[2px] ${accent.bar} opacity-40 group-hover:opacity-80 transition-opacity duration-300`} />
+              {/* Hover glow */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${accent.glow} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400`} />
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-2.5 mb-5">
+                  <span className="text-xl">{accent.icon}</span>
+                  <h3 className="text-[15px] font-bold text-gray-100 tracking-tight">{category.name}</h3>
+                </div>
+
+                <motion.div
+                  variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.2 } } }}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="flex flex-wrap gap-2"
+                >
+                  {category.skills.map((skill) => (
+                    <SkillBadge key={skill} skill={skill} />
+                  ))}
+                </motion.div>
+              </div>
             </motion.div>
-          </motion.div>
-        ))}
+          );
+        })}
       </motion.div>
     </SectionWrapper>
   );
 }
-
