@@ -16,7 +16,7 @@ import SkillBadge from "./SkillBadge";
 const CATEGORY_ACCENTS: Record<
   string,
   {
-    Icon: React.ComponentType<{ size: number; className: string }>;
+    Icon: React.ComponentType<any>;
     border: string;
     glow: string;
     bar: string;
