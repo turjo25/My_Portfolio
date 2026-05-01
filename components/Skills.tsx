@@ -1,17 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Code2, Palette, Settings, Database, Wrench, Trophy } from "lucide-react";
 import { SKILL_CATEGORIES } from "@/data/constants";
 import SectionWrapper from "./SectionWrapper";
 import SkillBadge from "./SkillBadge";
 
-const CATEGORY_ACCENTS: Record<string, { icon: string; border: string; glow: string; bar: string }> = {
-  "Programming Languages": { icon: "💻", border: "border-red-500/20", glow: "from-red-500/8", bar: "bg-red-500" },
-  "Frontend":              { icon: "🎨", border: "border-rose-500/20",   glow: "from-rose-500/8",   bar: "bg-rose-500" },
-  "Backend":               { icon: "⚙️", border: "border-orange-500/20",glow: "from-orange-500/8",bar: "bg-orange-500" },
-  "Databases":             { icon: "🗄️", border: "border-red-500/20",   glow: "from-red-500/8",   bar: "bg-red-500" },
-  "Tools":                 { icon: "🔧", border: "border-gray-500/20",   glow: "from-gray-500/8",   bar: "bg-gray-500" },
-  "Competitive Programming":{ icon: "🏆", border: "border-amber-500/20", glow: "from-amber-500/8",  bar: "bg-amber-500" },
+const CATEGORY_ACCENTS: Record<string, { Icon: React.ComponentType<{ size: number; className: string }>; border: string; glow: string; bar: string }> = {
+  "Programming Languages": { Icon: Code2, border: "border-red-500/20", glow: "from-red-500/8", bar: "bg-red-500" },
+  "Frontend":              { Icon: Palette, border: "border-rose-500/20",   glow: "from-rose-500/8",   bar: "bg-rose-500" },
+  "Backend":               { Icon: Settings, border: "border-orange-500/20",glow: "from-orange-500/8",bar: "bg-orange-500" },
+  "Databases":             { Icon: Database, border: "border-red-500/20",   glow: "from-red-500/8",   bar: "bg-red-500" },
+  "Tools":                 { Icon: Wrench, border: "border-gray-500/20",   glow: "from-gray-500/8",   bar: "bg-gray-500" },
+  "Competitive Programming":{ Icon: Trophy, border: "border-amber-500/20", glow: "from-amber-500/8",  bar: "bg-amber-500" },
 };
 
 export default function Skills() {
@@ -46,7 +47,7 @@ export default function Skills() {
       >
         {SKILL_CATEGORIES.map((category, index) => {
           const accent = CATEGORY_ACCENTS[category.name] ?? {
-            icon: "⚡", border: "border-white/10", glow: "from-red-500/8", bar: "bg-red-500",
+            Icon: Trophy, border: "border-white/10", glow: "from-red-500/8", bar: "bg-red-500",
           };
           return (
             <motion.div
@@ -62,7 +63,7 @@ export default function Skills() {
 
               <div className="relative z-10">
                 <div className="flex items-center gap-2.5 mb-5">
-                  <span className="text-xl">{accent.icon}</span>
+                  <accent.Icon size={20} className="text-white" />
                   <h3 className="text-[15px] font-bold text-gray-100 tracking-tight">{category.name}</h3>
                 </div>
 
