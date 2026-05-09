@@ -3,8 +3,8 @@ import { Project, SkillCategory, Education, ContactInfo } from "@/types";
 // Personal Information
 export const PERSONAL_INFO = {
   name: "MD. SHARDUL RAHMAN TURJO",
-  role: "Full-Stack Developer & Software Engineering Student",
-  tagline: "Passionate about building scalable, real-world web applications. 500+ coding challenges solved across LeetCode, Codeforces & HackerRank.",
+  role: "Full-Stack Developer",
+  tagline: "Building modern web applications with React, Django, PostgreSQL, and AI integrations.",
 } as const;
 
 // Contact Information
@@ -18,7 +18,9 @@ export const CONTACT_INFO: ContactInfo = {
 
 // About Section Content
 export const ABOUT_TEXT =
-  "Software Engineering student at Daffodil International University (CGPA: 3.87/4.00) with a passion for building scalable, production-ready web applications. I have solved 500+ coding challenges across competitive programming platforms, sharpening my analytical thinking and problem-solving approach. Comfortable across the full stack — from Django REST APIs and Python backends to React frontends — I am driven by clean, maintainable code and real-world impact.";
+  "Full-stack developer focused on building scalable web applications using React, Django, and REST APIs. Interested in backend engineering, clean architecture, authentication systems, and creating production-ready user experiences.";
+export const BACKGROUND =
+  "I am also a Software Engineering student at Daffodil International University with a CGPA of 3.87/4.00. Solved 500+ coding challenges across competitive programming platforms, strengthening analytical thinking and problem-solving skills through algorithmic practice and real-world development.";
 
 // Skills Categories
 export const SKILL_CATEGORIES: SkillCategory[] = [
@@ -52,8 +54,9 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 export const PROJECTS: Project[] = [
   {
     title: "Royal Shop",
-    description:
-      "E-Shop is a Django-based single-vendor e-commerce platform featuring product management, cart and order processing, and secure SSLCommerz payment integration. It includes user authentication (manual & Google OAuth), product reviews, email order notifications, and an admin dashboard for inventory and order control—built with Django, SQLite, and modern web technologies.",
+    shortDescription: "A Django-based single vendor e-commerce platform with SSLCommerz payment integration, product management, and order processing.",
+    keyFeatures: ["User authentication with Google OAuth", "Product browsing with category & price filters", "Shopping cart with persistent session storage", "SSLCommerz payment gateway integration"],
+    technicalChallenges: ["Integrating SSLCommerz payment gateway", "Managing secure user sessions and cart state", "Handling post-checkout inventory updates"],
     techStack: ["Django", "SQLite", "HTML", "CSS"],
     githubLink: "https://github.com/turjo25/Royal_Shop.git",
     liveLink: "https://royal-shop-uf36.onrender.com",
@@ -61,8 +64,9 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "Farm2Market",
-    description:
-      "A web-based e-commerce platform that connects farmers directly with consumers, eliminating intermediaries and enabling fair pricing. The system supports product listing, cart and order management, user authentication, and an admin panel for monitoring inventory and transactions. It focuses on improving transparency, accessibility, and efficiency in agricultural product distribution.",
+    shortDescription: "A modern multi-role e-commerce platform built with Django connecting farmers directly with buyers.",
+    keyFeatures: ["Multi-role authentication (Farmer/Buyer)", "Farmer dashboard for inventory management", "Real-time order tracking and notifications", "Product rating and review system"],
+    technicalChallenges: ["Designing a complex multi-role database schema", "Implementing real-time order notifications", "Handling logistics coordination logic"],
     techStack: ["Django","Supabase","PostgreSQL", "HTML", "Tailwind CSS"],
     githubLink: "https://github.com/turjo25/Farm2Market.git",
     liveLink: "https://farm2market-1ao7.onrender.com/",
@@ -70,8 +74,9 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "GhoreRanna",
-    description:
-      "A web-based food ordering platform focused on homemade meals, allowing users to browse dishes, place orders, and manage their accounts. The system includes user authentication, product (meal) management, cart functionality, and order processing. An admin panel enables efficient control over menu items, orders, and users, providing a streamlined experience for both customers and administrators.",
+    shortDescription: "A web-based food ordering platform connecting customers with home cooks for convenient meal delivery.",
+    keyFeatures: ["Role-specific dashboards (Customer/Cook/Delivery)", "Live order status tracking", "Menu and inventory management for home cooks", "Discount coupon system integration"],
+    technicalChallenges: ["Managing diverse permissions across multiple user roles", "Synchronizing live order status updates", "Building a comprehensive master admin dashboard"],
     techStack: ["Django","Supabase","PostgreSQL", "HTML", "Tailwind CSS"],
     githubLink: "https://github.com/turjo25/GhoreRanna.git",
     liveLink: "https://ghoreranna.onrender.com/",
@@ -79,8 +84,9 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "To-Do Web App",
-    description:
-      "A full-featured to-do application built with Django backend and SQLite database. Features user authentication, task management, and a clean, responsive UI.",
+    shortDescription: "A full-featured To-Do List web application built with Python and Django, featuring secure user authentication.",
+    keyFeatures: ["Secure user authentication system", "Task status management (Pending/Completed)", "Task categorization and advanced filtering", "Due date and deadline tracking"],
+    technicalChallenges: ["Implementing dynamic task filtering", "Designing a responsive Bootstrap UI", "Ensuring secure per-user data isolation"],
     techStack: ["Django", "SQLite", "HTML", "CSS"],
     githubLink: "https://github.com/turjo25/To-Do_Web_App_with_Django.git",
     liveLink: "https://todo-web-app-kg5f.onrender.com",
@@ -88,8 +94,9 @@ export const PROJECTS: Project[] = [
   },
    {
     title: "AI Agent",
-    description:
-      "A Django-based AI shopping assistant that enables interactive customer conversations using the OpenRouter AI API, complete with session history and responsive UI.",
+    shortDescription: "A friendly AI-powered customer service chatbot built with Django and integrated with OpenRouter AI.",
+    keyFeatures: ["Real-time chat interface with smooth animations", "AI-Powered responses using DeepSeek AI model", "Persistent MySQL conversation history", "User session management"],
+    technicalChallenges: ["Integrating with OpenRouter API for seamless AI responses", "Managing real-time session state", "Optimizing chat history database queries"],
     techStack: ["Django", "Python", "HTML", "Tailwind CSS"],
     githubLink: "https://github.com/turjo25/AI_AGENT.git",
     liveLink: "https://aiagent-somp.onrender.com/",
@@ -97,8 +104,9 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "WeatherFlow",
-    description:
-      "WeatherFlow is a Django-based weather application that provides real-time weather information using external weather APIs. It allows users to search for cities and view current temperature, weather conditions, humidity, and wind details through a clean and responsive interface—built with Django, API integration, and modern web technologies.",
+    shortDescription: "A modern, responsive weather application built with React and Tailwind CSS.",
+    keyFeatures: ["Real-time weather data using WeatherAPI", "Modern glassmorphism UI design", "City-based weather search", "Responsive mobile-friendly layout"],
+    technicalChallenges: ["Handling asynchronous API calls efficiently", "Implementing a glassmorphism design system", "Managing complex React state for weather data"],
     techStack: ["React","Weather API", "HTML", "CSS"],
     githubLink: "https://github.com/turjo25/WeatherFlow.git",
     liveLink: "https://weather-flow-nine.vercel.app/",
@@ -106,24 +114,27 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "Online Library",
-    description:
-      "A digital library management system built with Django. Allows users to browse, search, and manage books with an intuitive interface.",
+    shortDescription: "A comprehensive Online Library Management System built with Python, Django, and Tailwind CSS.",
+    keyFeatures: ["Secure user authentication and profile management", "Full CRUD functionality for book management", "User review and feedback system", "Responsive book browsing interface"],
+    technicalChallenges: ["Implementing a secure admin-only CRUD interface", "Building a reliable feedback and review system", "Designing a fully responsive UI with Tailwind CSS"],
     techStack: ["Django", "SQLite", "HTML", "CSS"],
     githubLink: "https://github.com/turjo25/Online_Library_Django.git",
     image: "/projects/OnlineLibrary.png",
   },
   {
     title: "Shopping Cart",
-    description:
-      "An e-commerce shopping cart application with full CRUD functionality. Built with PHP and MySQL, featuring product management and cart operations.",
+    shortDescription: "A straightforward shopping cart application built using PHP and MySQL demonstrating core CRUD operations.",
+    keyFeatures: ["Add and remove products dynamically", "Update product quantities seamlessly", "Persistent database storage using MySQL", "Clean and simple user interface"],
+    technicalChallenges: ["Managing pure PHP session state", "Implementing secure MySQL queries", "Handling dynamic cart calculations"],
     techStack: ["PHP", "MySQL", "HTML", "CSS"],
     githubLink: "https://github.com/turjo25/ShoppingCart_PHP-CRUD.git",
     image: "/projects/ShoppingCart.png",
   },
   {
     title: "LearningHub",
-    description:
-      "LearningHub is a full-stack Learning Management System combining Django’s backend (REST APIs, authentication, role-based access) with a React-based frontend. It supports teacher workflows like course and assignment creation, and student workflows such as browsing courses, enrolling in lessons, and submitting assignments — demonstrating a complete ed-tech solution from database to UI.",
+    shortDescription: "A full-stack Learning Management System (LMS) where teachers can create courses and students can learn.",
+    keyFeatures: ["Role-based access (Student/Teacher/Admin)", "Course creation and assignment management", "Student enrollment and progress tracking", "RESTful API backend with Django REST Framework"],
+    technicalChallenges: ["Building a decoupled React frontend and Django backend", "Implementing JWT authentication", "Designing complex relational models for courses and assignments"],
     techStack: ["Django", "Django REST Framework (DRF)","React","JWT / Session-based Authentication", "SQLite", "Tailwind CSS"],
     githubLink: "https://github.com/turjo25/LearningHub.git",
     // liveLink: "https://personal-portfolio-turjo25.vercel.app",

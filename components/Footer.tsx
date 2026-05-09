@@ -58,7 +58,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer id="contact" className="relative border-t border-white/8">
+    <footer id="contact" className="relative border-t border-red-500/20">
       {/* Gradient backdrop */}
       <div className="absolute inset-0 bg-gradient-to-b from-red-500/4 via-transparent to-orange-500/4 pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-red-500/5 rounded-full blur-[100px] pointer-events-none" />
@@ -138,7 +138,7 @@ export default function Footer() {
         {/* Copyright */}
         <motion.div
           variants={itemVariants}
-          className="text-center text-gray-600 text-sm border-t border-white/8 pt-8 font-medium"
+          className="text-center text-gray-600 text-sm border-t border-red-500/20 pt-8 font-medium"
         >
           © {currentYear}{" "}
           <span className="text-gray-400">MD. Shardul Rahman Turjo</span>

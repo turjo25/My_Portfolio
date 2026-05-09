@@ -2,7 +2,9 @@
 
 export interface Project {
   title: string;
-  description: string;
+  shortDescription?: string;
+  keyFeatures?: string[];
+  technicalChallenges?: string[];
   techStack: string[];
   githubLink: string;
   liveLink?: string;

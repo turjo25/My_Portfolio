@@ -165,21 +165,7 @@ export default function FloatingSocialDock() {
           )}
         </motion.div>
 
-        {/* Pulse effect when closed */}
-        {!isExpanded && (
-          <motion.div
-            className="absolute inset-0 rounded-full bg-red-500/20"
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.5, 0, 0.5],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 2,
-              ease: "easeInOut",
-            }}
-          />
-        )}
+
       </motion.button>
 
       {/* Badge showing number of links */}

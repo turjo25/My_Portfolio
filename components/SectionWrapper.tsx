@@ -23,7 +23,7 @@ export default function SectionWrapper({
     <section
       id={id}
       className={cn(
-        "min-h-screen py-16 md:py-24 px-4 sm:px-6 lg:px-8",
+        "py-10 md:py-16 px-4 sm:px-6 lg:px-8",
         className
       )}
     >

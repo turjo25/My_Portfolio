@@ -28,19 +28,11 @@ export default function Hero() {
   return (
     <SectionWrapper
       id="home"
-      className="flex flex-col items-center justify-center relative min-h-screen"
+      className="flex flex-col items-center justify-center relative py-12 md:py-20 mt-10"
     >
       {/* Ambient orbs */}
-      <motion.div
-        className="absolute top-1/4 left-1/6 w-[500px] h-[500px] bg-red-600/8 rounded-full blur-[120px] pointer-events-none will-change-transform transform-gpu"
-        animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.7, 0.4] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/6 w-[400px] h-[400px] bg-orange-600/8 rounded-full blur-[100px] pointer-events-none will-change-transform transform-gpu"
-        animate={{ scale: [1.2, 1, 1.2], opacity: [0.4, 0.7, 0.4] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 4.5 }}
-      />
+      <div className="absolute top-1/4 left-1/6 w-[500px] h-[500px] bg-red-600/8 rounded-full blur-[120px] pointer-events-none transform-gpu opacity-40" />
+      <div className="absolute bottom-1/4 right-1/6 w-[400px] h-[400px] bg-orange-600/8 rounded-full blur-[100px] pointer-events-none transform-gpu opacity-40" />
 
       {/* Two-column grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center w-full max-w-6xl mx-auto relative z-10 px-4 sm:px-6">
@@ -56,7 +48,6 @@ export default function Hero() {
           <motion.div variants={itemVariants} className="mb-7">
             <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-emerald-500/35 bg-emerald-500/10 text-emerald-400 text-sm font-semibold tracking-wide backdrop-blur-sm">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
               </span>
               Open to Opportunities
@@ -137,22 +128,7 @@ export default function Hero() {
         >
           <div className="relative">
             {/* Background halo */}
-            <motion.div
-              className="absolute inset-0 rounded-full bg-gradient-to-br from-red-500/25 to-orange-600/25 blur-[60px] scale-130 pointer-events-none will-change-transform transform-gpu"
-              animate={{ scale: [1.3, 1.5, 1.3], opacity: [0.5, 0.9, 0.5] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            />
-
-            {/* Spinning conic ring */}
-            <motion.div
-              className="absolute -inset-[3px] rounded-full"
-              style={{
-                background: "conic-gradient(from 0deg, #f87171, #ef4444, #dc2626, #f87171)",
-                borderRadius: "9999px",
-              }}
-              animate={{ rotate: 360 }}
-              transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
-            />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-red-500/25 to-orange-600/25 blur-[60px] scale-130 pointer-events-none transform-gpu opacity-70" />
 
             {/* Photo container */}
             <div className="relative w-60 h-60 sm:w-72 sm:h-72 lg:w-[320px] lg:h-[320px] rounded-full p-[3px] bg-gradient-to-br from-red-500 via-rose-500 to-orange-600">
@@ -177,28 +153,28 @@ export default function Hero() {
 
             {/* Badge — CGPA */}
             <motion.div
-              className="absolute -bottom-4 -right-8 glass border border-white/15 rounded-2xl px-4 py-3 shadow-2xl shadow-black/40"
+              className="absolute -bottom-2 -right-2 glass border border-red-500/30 bg-black/60 rounded-xl px-3 py-2 shadow-2xl backdrop-blur-md"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.3, type: "spring", stiffness: 220 }}
               whileHover={{ scale: 1.07, y: -2 }}
             >
-              <p className="text-[10px] text-gray-500 font-semibold uppercase tracking-widest mb-0.5">CGPA</p>
-              <p className="text-emerald-400 font-bold text-xl leading-none">
-                3.87 <span className="text-gray-500 text-xs font-normal">/ 4.0</span>
+              <p className="text-[8px] text-red-200 font-semibold uppercase tracking-widest mb-0.5">PROJECTS BUILT</p>
+              <p className="text-emerald-400 font-bold text-lg leading-none">
+                7 +
               </p>
             </motion.div>
 
             {/* Badge — Problems */}
             <motion.div
-              className="absolute -top-4 -left-10 glass border border-white/15 rounded-2xl px-4 py-3 shadow-2xl shadow-black/40"
+              className="absolute -top-2 -left-4 glass border border-red-500/30 bg-black/60 rounded-xl px-3 py-2 shadow-2xl backdrop-blur-md"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.5, type: "spring", stiffness: 220 }}
               whileHover={{ scale: 1.07, y: -2 }}
             >
-              <p className="text-[10px] text-gray-500 font-semibold uppercase tracking-widest mb-0.5">Problems Solved</p>
-              <p className="text-red-400 font-bold text-xl leading-none">500+ 🏆</p>
+              <p className="text-[8px] text-red-200 font-semibold uppercase tracking-widest mb-0.5">Problems Solved</p>
+              <p className="text-red-400 font-bold text-lg leading-none">500+ 🏆</p>
             </motion.div>
           </div>
         </motion.div>
@@ -206,19 +182,17 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="w-full flex justify-center mt-16 md:absolute md:bottom-10 md:left-0 md:right-0 md:mt-0 z-10"
+        className="w-full flex justify-center mt-12 md:absolute md:bottom-6 md:left-0 md:right-0 md:mt-0 z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.2, duration: 0.8 }}
       >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+        <div
           className="cursor-pointer p-3 rounded-full glass border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-300"
           onClick={() => scrollToSection("#about")}
         >
           <ArrowDown size={20} className="text-gray-500" />
-        </motion.div>
+        </div>
       </motion.div>
     </SectionWrapper>
   );

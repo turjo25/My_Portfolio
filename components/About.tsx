@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import { Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
-import { CONTACT_INFO, ABOUT_TEXT } from "@/data/constants";
+import { CONTACT_INFO, ABOUT_TEXT, BACKGROUND } from "@/data/constants";
 import SectionWrapper from "./SectionWrapper";
 
 export default function About() {
@@ -140,6 +140,8 @@ export default function About() {
               <p className="text-red-400 text-xs font-bold uppercase tracking-[0.2em] mb-4">Who I Am</p>
               <p className="text-gray-300 text-base md:text-[17px] leading-relaxed relative z-10">
                 {ABOUT_TEXT}
+                <br /><br />
+                {BACKGROUND}
               </p>
 
               {/* Tech chips */}

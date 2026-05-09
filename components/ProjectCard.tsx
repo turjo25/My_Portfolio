@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { Github, ExternalLink, Star } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Github, ExternalLink, Star, AlignLeft, Zap, Code } from "lucide-react";
 import { Project } from "@/types";
 
 interface ProjectCardProps {
@@ -29,7 +30,11 @@ const TECH_COLORS: Record<string, string> = {
 };
 const DEFAULT_TECH = "text-gray-300 bg-white/5 border-white/12";
 
+type TabType = "overview" | "features" | "challenges";
+
 export default function ProjectCard({ project, index, featured }: ProjectCardProps) {
+  const [activeTab, setActiveTab] = useState<TabType>("overview");
+
   const cardVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.92 },
     visible: {
@@ -42,8 +47,8 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
     <motion.div
       variants={cardVariants}
       className="group glass rounded-2xl border border-white/8 hover:border-white/15 transition-all duration-400 flex flex-col relative overflow-hidden h-full"
-      whileHover={{ scale: 1.025, y: -7 }}
-      transition={{ type: "spring", stiffness: 280, damping: 20 }}
+      whileHover={{ scale: 1.02, y: -5 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
       {/* Hover gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-violet-500/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -73,20 +78,99 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
       )}
 
       {/* Content Container */}
-      <div className="flex flex-col flex-grow p-6 md:p-7 relative z-10 bg-[#0a0a1a]/40">
+      <div className="flex flex-col flex-grow p-6 md:p-7 relative z-10 bg-[#0a0a1a]/60">
         
         {/* Title */}
-        <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-3 tracking-tight">
+        <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4 tracking-tight">
           {project.title}
         </h3>
 
-        {/* Description */}
-        <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-6 italic font-light flex-grow">
-          {project.description}
-        </p>
+        {/* Tab Navigation */}
+        <div className="flex items-center gap-2 mb-4 border-b border-white/10 pb-3 overflow-x-auto">
+          <button 
+            onClick={() => setActiveTab("overview")}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-300 whitespace-nowrap ${activeTab === "overview" ? "bg-white/15 text-white" : "text-gray-400 hover:text-gray-200 hover:bg-white/5"}`}
+          >
+            <AlignLeft size={14} className={activeTab === "overview" ? "text-blue-400" : ""} /> Overview
+          </button>
+          
+          {project.keyFeatures && project.keyFeatures.length > 0 && (
+            <button 
+              onClick={() => setActiveTab("features")}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-300 whitespace-nowrap ${activeTab === "features" ? "bg-white/15 text-white" : "text-gray-400 hover:text-gray-200 hover:bg-white/5"}`}
+            >
+              <Zap size={14} className={activeTab === "features" ? "text-amber-400" : ""} /> Features
+            </button>
+          )}
+
+          {project.technicalChallenges && project.technicalChallenges.length > 0 && (
+            <button 
+              onClick={() => setActiveTab("challenges")}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-300 whitespace-nowrap ${activeTab === "challenges" ? "bg-white/15 text-white" : "text-gray-400 hover:text-gray-200 hover:bg-white/5"}`}
+            >
+              <Code size={14} className={activeTab === "challenges" ? "text-rose-400" : ""} /> Challenges
+            </button>
+          )}
+        </div>
+
+        {/* Tab Content */}
+        <div className="min-h-[160px] mb-6 flex-grow flex flex-col">
+          <AnimatePresence mode="wait">
+            {activeTab === "overview" && (
+              <motion.div
+                key="overview"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="text-gray-300 text-sm leading-relaxed"
+              >
+                {project.shortDescription}
+              </motion.div>
+            )}
+
+            {activeTab === "features" && (
+              <motion.div
+                key="features"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+              >
+                <ul className="space-y-2.5">
+                  {project.keyFeatures?.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-sm text-gray-300 leading-snug">
+                      <Zap size={14} className="text-amber-400/80 mt-0.5 shrink-0" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+
+            {activeTab === "challenges" && (
+              <motion.div
+                key="challenges"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+              >
+                <ul className="space-y-2.5">
+                  {project.technicalChallenges?.map((challenge, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-sm text-gray-300 leading-snug">
+                      <Code size={14} className="text-rose-400/80 mt-0.5 shrink-0" />
+                      <span>{challenge}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
         {/* Tech stack */}
-        <div className="flex flex-wrap items-center gap-2 mb-8">
+        <div className="flex flex-wrap items-center gap-2 mb-8 mt-auto">
           {project.techStack.slice(0, 4).map((tech) => (
             <span
               key={tech}
@@ -103,7 +187,7 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
         </div>
 
         {/* Action Buttons */}
-        <div className={`grid ${project.liveLink ? "grid-cols-2" : "grid-cols-1"} gap-3 mt-auto`}>
+        <div className={`grid ${project.liveLink ? "grid-cols-2" : "grid-cols-1"} gap-3`}>
           {project.liveLink && (
             <motion.a
               href={project.liveLink}
