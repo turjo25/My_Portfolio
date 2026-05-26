@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, ExternalLink, Star, AlignLeft, Zap, Code } from "lucide-react";
 import { Project } from "@/types";
@@ -65,15 +64,14 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
 
       {/* Project Image (Edge to Edge) */}
       {project.image && (
-        <div className="relative w-full h-56 sm:h-64 overflow-hidden z-10 shrink-0">
-          <Image
+        <div className="relative w-full overflow-hidden z-10 shrink-0">
+          <img
             src={project.image}
             alt={project.title}
-            fill
-            className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            className="w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
           {/* Subtle bottom fade for the image */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-transparent to-transparent opacity-90" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-transparent to-transparent opacity-80 pointer-events-none z-20" />
         </div>
       )}
 
@@ -114,7 +112,7 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
         </div>
 
         {/* Tab Content */}
-        <div className="min-h-[160px] mb-6 flex-grow flex flex-col">
+        <div className="min-h-[72px] mb-6 flex flex-col">
           <AnimatePresence mode="wait">
             {activeTab === "overview" && (
               <motion.div
@@ -170,7 +168,7 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
         </div>
 
         {/* Tech stack */}
-        <div className="flex flex-wrap items-center gap-2 mb-8 mt-auto">
+        <div className="flex flex-wrap items-center gap-2 mb-6">
           {project.techStack.slice(0, 4).map((tech) => (
             <span
               key={tech}
@@ -187,7 +185,7 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
         </div>
 
         {/* Action Buttons */}
-        <div className={`grid ${project.liveLink ? "grid-cols-2" : "grid-cols-1"} gap-3`}>
+        <div className={`grid ${project.liveLink ? "grid-cols-2" : "grid-cols-1"} gap-3 mt-auto`}>
           {project.liveLink && (
             <motion.a
               href={project.liveLink}

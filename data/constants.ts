@@ -73,6 +73,16 @@ export const PROJECTS: Project[] = [
     image: "/projects/Farm2Market.png",
   },
   {
+    title: "LearningHub",
+    shortDescription: "A full-stack Learning Management System (LMS) where teachers can create courses and students can learn.",
+    keyFeatures: ["Role-based access (Student/Teacher/Admin)", "Course creation and assignment management", "Student enrollment and progress tracking", "RESTful API backend with Django REST Framework"],
+    technicalChallenges: ["Building a decoupled React frontend and Django backend", "Implementing JWT authentication", "Designing complex relational models for courses and assignments"],
+    techStack: ["Django", "Django REST Framework (DRF)","React","JWT / Session-based Authentication", "SQLite", "Tailwind CSS"],
+    githubLink: "https://github.com/turjo25/LearningHub.git",
+    // liveLink: "https://personal-portfolio-turjo25.vercel.app",
+    image: "/projects/LearningHub.png",
+  },
+  {
     title: "GhoreRanna",
     shortDescription: "A web-based food ordering platform connecting customers with home cooks for convenient meal delivery.",
     keyFeatures: ["Role-specific dashboards (Customer/Cook/Delivery)", "Live order status tracking", "Menu and inventory management for home cooks", "Discount coupon system integration"],
@@ -130,16 +140,7 @@ export const PROJECTS: Project[] = [
     githubLink: "https://github.com/turjo25/ShoppingCart_PHP-CRUD.git",
     image: "/projects/ShoppingCart.png",
   },
-  {
-    title: "LearningHub",
-    shortDescription: "A full-stack Learning Management System (LMS) where teachers can create courses and students can learn.",
-    keyFeatures: ["Role-based access (Student/Teacher/Admin)", "Course creation and assignment management", "Student enrollment and progress tracking", "RESTful API backend with Django REST Framework"],
-    technicalChallenges: ["Building a decoupled React frontend and Django backend", "Implementing JWT authentication", "Designing complex relational models for courses and assignments"],
-    techStack: ["Django", "Django REST Framework (DRF)","React","JWT / Session-based Authentication", "SQLite", "Tailwind CSS"],
-    githubLink: "https://github.com/turjo25/LearningHub.git",
-    // liveLink: "https://personal-portfolio-turjo25.vercel.app",
-    image: "/projects/LearningHub.png",
-  },
+  
 ];
 
 // Education Data
