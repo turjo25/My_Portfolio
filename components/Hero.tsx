@@ -97,7 +97,7 @@ export default function Hero() {
             </motion.button>
 
             <motion.a
-              href="https://drive.google.com/file/d/1M5tzVTADjcDlLVF9phgJqJ1yyQPmgFgB/view?usp=sharing"
+              href="https://drive.google.com/file/d/1ttc3FSHssoxe0Uv2GvpuiYpDLNjng7rH/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="h-12 px-7 glass border border-red-500/30 hover:border-red-400/60 text-red-300 hover:text-red-200 rounded-xl font-semibold transition-all duration-300 flex items-center gap-2.5 hover:bg-red-500/10"
