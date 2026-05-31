@@ -79,7 +79,7 @@ export const PROJECTS: Project[] = [
     technicalChallenges: ["Building a decoupled React frontend and Django backend", "Implementing JWT authentication", "Designing complex relational models for courses and assignments"],
     techStack: ["Django", "Django REST Framework (DRF)","React","JWT / Session-based Authentication", "SQLite", "Tailwind CSS"],
     githubLink: "https://github.com/turjo25/LearningHub.git",
-    // liveLink: "https://personal-portfolio-turjo25.vercel.app",
+    liveLink: "https://learning-hub-25.vercel.app/",
     image: "/projects/LearningHub.png",
   },
   {
