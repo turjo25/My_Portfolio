@@ -1,11 +1,11 @@
 <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Ultra bright gradient for an intense shiny core -->
+    <!-- Ultra bright gradient for an intense shiny crimson core -->
     <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stopColor="#ffffff" />
-      <stop offset="30%" stopColor="#a5f3fc" />
-      <stop offset="60%" stopColor="#00d4ff" />
-      <stop offset="100%" stopColor="#0055ff" />
+      <stop offset="30%" stopColor="#fca5a5" />
+      <stop offset="65%" stopColor="#ef4444" />
+      <stop offset="100%" stopColor="#991b1b" />
     </linearGradient>
 
     <!-- Super wide and intense diffuse glow -->
@@ -28,15 +28,15 @@
     </filter>
   </defs>
 
-  <!-- Deep pitch background for maximum neon contrast -->
-  <rect width="512" height="512" rx="120" fill="#010611"/>
+  <!-- Deep pitch background matching the project background for maximum neon contrast -->
+  <rect width="512" height="512" rx="120" fill="#0a0a0a"/>
 
-  <!-- HEXAGON LAYER 1: The wide atmospheric neon aura -->
+  <!-- HEXAGON LAYER 1: The wide atmospheric neon aura in crimson red -->
   <path
     d="M 256 50 L 435 153 L 435 359 L 256 462 L 77 359 L 77 153 Z"
     stroke="url(#logo-grad)"
     strokeWidth="24"
-    fill="rgba(0, 212, 255, 0.1)"
+    fill="rgba(239, 68, 68, 0.08)"
     filter="url(#glow-wide)"
   />
   
