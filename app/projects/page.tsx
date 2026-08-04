@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -8,62 +5,51 @@ import Footer from "@/components/Footer";
 import ProjectCard from "@/components/ProjectCard";
 import { PROJECTS } from "@/data/constants";
 
-export default function ProjectsPage() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
+export const metadata = {
+  title: "Projects | MD. SHARDUL RAHMAN TURJO",
+  description: "Browse all web development projects, full-stack web apps, APIs, and open-source contributions built by Shardul Rahman Turjo.",
+};
 
+export default function ProjectsPage() {
   return (
-    <main className="min-h-screen overflow-x-hidden pt-16 md:pt-24 pb-12 flex flex-col bg-[#0a0a0a]">
+    <main className="min-h-screen overflow-x-hidden pt-20 md:pt-24 pb-16 flex flex-col bg-[#08090d] relative">
+      {/* CSS-only Aurora Mesh Background */}
+      <div className="aurora-mesh" aria-hidden="true" />
+
       {/* Navigation Bar */}
       <Navbar />
 
-      <div className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-8 md:mt-12">
+      <div className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-6 md:mt-10 relative z-10">
         {/* Back Button */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <Link href="/#projects">
-            <button className="group flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-300">
-              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
-              <span className="font-medium">Back to Home</span>
-            </button>
+        <div className="mb-8">
+          <Link
+            href="/#projects"
+            className="group inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-300 px-3 py-1.5 rounded-lg hover:bg-white/5"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300 text-red-400" />
+            <span className="font-medium text-sm">Back to Home</span>
           </Link>
-        </motion.div>
+        </div>
 
         {/* Page Title */}
-        <motion.h1
-          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 md:mb-16 tracking-tight"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-        >
-          <span className="text-gradient-primary">
-            All Projects
-          </span>
-        </motion.h1>
+        <div className="mb-12 md:mb-16">
+          <p className="text-red-400 text-xs font-bold uppercase tracking-[0.2em] mb-2">
+            Selected Works
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+            <span className="text-gradient-primary">All Projects</span>
+          </h1>
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl mt-4 leading-relaxed">
+            A showcase of production-ready full-stack applications, REST APIs, competitive programming projects, and open-source tools.
+          </p>
+        </div>
 
         {/* Projects Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 mb-20"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-20">
           {PROJECTS.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} />
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* Footer */}

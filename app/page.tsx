@@ -1,5 +1,4 @@
-"use client";
-
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
@@ -8,29 +7,41 @@ import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Education from "@/components/Education";
 import Footer from "@/components/Footer";
-import CommandPalette from "@/components/CommandPalette";
-import FloatingSocialDock from "@/components/FloatingSocialDock";
+
+// Dynamically import client-only overlays to reduce initial bundle size
+const CommandPalette = dynamic(() => import("@/components/CommandPalette"), {
+  ssr: false,
+});
+const FloatingSocialDock = dynamic(
+  () => import("@/components/FloatingSocialDock"),
+  {
+    ssr: false,
+  }
+);
 
 /**
- * Main Portfolio Page
- * Combines all sections into a single-page application
+ * Main Portfolio Page (Server Component)
+ * Clean RSC structure with code-split client interactivity
  */
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-x-hidden pt-16 md:pt-20">
+    <main className="min-h-screen overflow-x-hidden pt-16 md:pt-20 relative">
+      {/* CSS-only Aurora Mesh Background */}
+      <div className="aurora-mesh" aria-hidden="true" />
+
       {/* Navigation Bar */}
       <Navbar />
 
-      {/* Command Palette */}
+      {/* Command Palette (Dynamic Client Overlay) */}
       <CommandPalette />
 
-      {/* Floating Social Dock */}
+      {/* Floating Social Dock (Dynamic Client Overlay) */}
       <FloatingSocialDock />
 
       {/* Hero Section */}
       <Hero />
 
-      {/* Stats / Achievements Strip */}
+      {/* Stats / Key Metrics Strip */}
       <Stats />
 
       {/* About Section */}

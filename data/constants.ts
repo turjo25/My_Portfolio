@@ -88,7 +88,7 @@ export const PROJECTS: Project[] = [
     ],
     githubLink: "https://github.com/turjo25/FinanceTracker.git",
     liveLink: "https://finance-tracker-25.vercel.app/",
-    image: "/projects/FinanceTracker.png",
+    image: "/projects/FinanceTracker.webp",
   },
   {
     title: "LearningHub",
@@ -115,7 +115,7 @@ export const PROJECTS: Project[] = [
     ],
     githubLink: "https://github.com/turjo25/LearningHub.git",
     liveLink: "https://learning-hub-25.vercel.app/",
-    image: "/projects/LearningHub.png",
+    image: "/projects/LearningHub.webp",
   },
   {
     title: "Royal Shop",
@@ -135,7 +135,7 @@ export const PROJECTS: Project[] = [
     techStack: ["Django", "SQLite", "HTML", "CSS"],
     githubLink: "https://github.com/turjo25/Royal_Shop.git",
     liveLink: "https://royal-shop-uf36.onrender.com",
-    image: "/projects/Royal_Eshop.png",
+    image: "/projects/Royal_Eshop.webp",
   },
   {
     title: "Farm2Market",
@@ -155,7 +155,7 @@ export const PROJECTS: Project[] = [
     techStack: ["Django", "Supabase", "PostgreSQL", "HTML", "Tailwind CSS"],
     githubLink: "https://github.com/turjo25/Farm2Market.git",
     liveLink: "https://farm2market-1ao7.onrender.com/",
-    image: "/projects/Farm2Market.png",
+    image: "/projects/Farm2Market.webp",
   },
   {
     title: "GhoreRanna",
@@ -175,7 +175,7 @@ export const PROJECTS: Project[] = [
     techStack: ["Django", "Supabase", "PostgreSQL", "HTML", "Tailwind CSS"],
     githubLink: "https://github.com/turjo25/GhoreRanna.git",
     liveLink: "https://ghoreranna.onrender.com/",
-    image: "/projects/Ghoreranna.png",
+    image: "/projects/Ghoreranna.webp",
   },
   {
     title: "To-Do Web App",
@@ -195,7 +195,7 @@ export const PROJECTS: Project[] = [
     techStack: ["Django", "SQLite", "HTML", "CSS"],
     githubLink: "https://github.com/turjo25/To-Do_Web_App_with_Django.git",
     liveLink: "https://todo-web-app-kg5f.onrender.com",
-    image: "/projects/ToDo.png",
+    image: "/projects/ToDo.webp",
   },
   {
     title: "AI Agent",
@@ -215,7 +215,7 @@ export const PROJECTS: Project[] = [
     techStack: ["Django", "Python", "HTML", "Tailwind CSS"],
     githubLink: "https://github.com/turjo25/AI_AGENT.git",
     liveLink: "https://aiagent-somp.onrender.com/",
-    image: "/projects/AiAgent.png",
+    image: "/projects/AiAgent.webp",
   },
   {
     title: "WeatherFlow",
@@ -235,7 +235,7 @@ export const PROJECTS: Project[] = [
     techStack: ["React", "Weather API", "HTML", "CSS"],
     githubLink: "https://github.com/turjo25/WeatherFlow.git",
     liveLink: "https://weather-flow-nine.vercel.app/",
-    image: "/projects/WeatherFlow.png",
+    image: "/projects/WeatherFlow.webp",
   },
   {
     title: "Online Library",
@@ -254,7 +254,7 @@ export const PROJECTS: Project[] = [
     ],
     techStack: ["Django", "SQLite", "HTML", "CSS"],
     githubLink: "https://github.com/turjo25/Online_Library_Django.git",
-    image: "/projects/OnlineLibrary.png",
+    image: "/projects/OnlineLibrary.webp",
   },
   {
     title: "Shopping Cart",
@@ -273,7 +273,7 @@ export const PROJECTS: Project[] = [
     ],
     techStack: ["PHP", "MySQL", "HTML", "CSS"],
     githubLink: "https://github.com/turjo25/ShoppingCart_PHP-CRUD.git",
-    image: "/projects/ShoppingCart.png",
+    image: "/projects/ShoppingCart.webp",
   },
 ];
 

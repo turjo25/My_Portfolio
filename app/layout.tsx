@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { PERSONAL_INFO, CONTACT_INFO } from "@/data/constants";
 
@@ -7,6 +7,12 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-outfit",
 });
 
 const siteUrl =
@@ -78,7 +84,6 @@ export const metadata: Metadata = {
     shortcut: "/favicon.svg",
     apple: "/favicon.svg",
   },
-  manifest: "/site.webmanifest",
   alternates: {
     canonical: siteUrl,
   },
@@ -121,7 +126,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`scroll-smooth ${inter.variable}`}>
+    <html lang="en" className={`scroll-smooth ${outfit.variable} ${inter.variable}`}>
       <head>
         {/* Structured Data */}
         <script

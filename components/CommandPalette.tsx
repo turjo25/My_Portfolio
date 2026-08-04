@@ -14,16 +14,11 @@ interface Command {
   category: string;
 }
 
-/**
- * Command Palette Component
- * Cmd+K style navigation for quick access to sections
- */
 export default function CommandPalette() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  // Build command list
   const commands: Command[] = [
     ...NAV_LINKS.map((link) => ({
       id: link.href,
@@ -55,39 +50,35 @@ export default function CommandPalette() {
     },
   ];
 
-  // Filter commands based on search
-  const filteredCommands = commands.filter((cmd) =>
-    cmd.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    cmd.category.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredCommands = commands.filter(
+    (cmd) =>
+      cmd.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      cmd.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Handle keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Open command palette with Cmd+K or Ctrl+K
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
-        setIsOpen(true);
+        setIsOpen((prev) => !prev);
       }
 
-      // Close with Escape
       if (e.key === "Escape" && isOpen) {
         setIsOpen(false);
         setSearchQuery("");
         setSelectedIndex(0);
       }
 
-      // Navigate with arrow keys
       if (isOpen) {
         if (e.key === "ArrowDown") {
           e.preventDefault();
-          setSelectedIndex((prev) => 
+          setSelectedIndex((prev) =>
             prev < filteredCommands.length - 1 ? prev + 1 : 0
           );
         }
         if (e.key === "ArrowUp") {
           e.preventDefault();
-          setSelectedIndex((prev) => 
+          setSelectedIndex((prev) =>
             prev > 0 ? prev - 1 : filteredCommands.length - 1
           );
         }
@@ -101,7 +92,6 @@ export default function CommandPalette() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, selectedIndex, filteredCommands]);
 
-  // Reset selected index when search changes
   useEffect(() => {
     setSelectedIndex(0);
   }, [searchQuery]);
@@ -120,7 +110,6 @@ export default function CommandPalette() {
     setSelectedIndex(0);
   };
 
-  // Group commands by category
   const groupedCommands = filteredCommands.reduce((acc, cmd) => {
     if (!acc[cmd.category]) {
       acc[cmd.category] = [];
@@ -130,138 +119,112 @@ export default function CommandPalette() {
   }, {} as Record<string, Command[]>);
 
   return (
-    <>
-      {/* Command Palette Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
-              onClick={() => setIsOpen(false)}
-            />
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 bg-black/75 backdrop-blur-md z-[100]"
+            onClick={() => setIsOpen(false)}
+          />
 
-            {/* Command Palette */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: -20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -20 }}
-              transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl mx-4 z-[101]"
-            >
-              <div className="glass-strong rounded-2xl shadow-2xl border border-white/20 overflow-hidden">
-                {/* Search Input */}
-                <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10">
-                  <Search size={20} className="text-gray-400" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Type to search or navigate..."
-                    className="flex-1 bg-transparent text-white placeholder-gray-500 outline-none text-lg"
-                    autoFocus
-                  />
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    className="p-1.5 hover:bg-white/10 rounded-lg transition-colors"
-                  >
-                    <X size={18} className="text-gray-400" />
-                  </button>
-                </div>
-
-                {/* Commands List */}
-                <div className="max-h-96 overflow-y-auto">
-                  {filteredCommands.length === 0 ? (
-                    <div className="px-4 py-8 text-center text-gray-400">
-                      No results found
-                    </div>
-                  ) : (
-                    Object.entries(groupedCommands).map(([category, cmds]) => (
-                      <div key={category} className="py-2">
-                        <div className="px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                          {category}
-                        </div>
-                        {cmds.map((command, index) => {
-                          const globalIndex = filteredCommands.findIndex((c) => c.id === command.id);
-                          return (
-                            <motion.button
-                              key={command.id}
-                              onClick={() => handleCommandSelect(command)}
-                              className={cn(
-                                "w-full flex items-center gap-3 px-4 py-3 text-left transition-colors",
-                                globalIndex === selectedIndex
-                                  ? "bg-red-500/20 text-white"
-                                  : "text-gray-300 hover:bg-white/5"
-                              )}
-                              whileHover={{ x: 4 }}
-                              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                            >
-                              <div className={cn(
-                                "p-2 rounded-lg",
-                                globalIndex === selectedIndex
-                                  ? "bg-red-500/30"
-                                  : "bg-white/5"
-                              )}>
-                                {command.icon}
-                              </div>
-                              <span className="flex-1 font-medium">{command.name}</span>
-                              <ArrowRight
-                                size={16}
-                                className={cn(
-                                  "text-gray-400",
-                                  globalIndex === selectedIndex && "text-red-400"
-                                )}
-                              />
-                            </motion.button>
-                          );
-                        })}
-                      </div>
-                    ))
-                  )}
-                </div>
-
-                {/* Footer */}
-                <div className="px-4 py-2 border-t border-white/10 flex items-center justify-between text-xs text-gray-500">
-                  <div className="flex items-center gap-4">
-                    <span className="flex items-center gap-1">
-                      <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-xs">↑↓</kbd>
-                      Navigate
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-xs">↵</kbd>
-                      Select
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-xs">Esc</kbd>
-                      Close
-                    </span>
-                  </div>
-                </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: -10 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed top-1/4 left-1/2 -translate-x-1/2 w-full max-w-xl px-4 z-[101]"
+          >
+            <div className="glass-strong rounded-3xl shadow-2xl border border-white/12 overflow-hidden bg-[#0a0d14]">
+              {/* Search Bar */}
+              <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/8">
+                <Search size={18} className="text-red-400" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search commands or sections... (Esc to close)"
+                  className="flex-1 bg-transparent text-white placeholder-gray-500 outline-none text-base font-medium"
+                  autoFocus
+                />
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-1 rounded-lg hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
+                >
+                  <X size={16} />
+                </button>
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
 
+              {/* Commands List */}
+              <div className="max-h-80 overflow-y-auto p-2">
+                {filteredCommands.length === 0 ? (
+                  <div className="px-4 py-8 text-center text-gray-500 text-sm">
+                    No results found
+                  </div>
+                ) : (
+                  Object.entries(groupedCommands).map(([category, cmds]) => (
+                    <div key={category} className="mb-2">
+                      <div className="px-3 py-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+                        {category}
+                      </div>
+                      {cmds.map((command) => {
+                        const globalIndex = filteredCommands.findIndex((c) => c.id === command.id);
+                        const isSelected = globalIndex === selectedIndex;
+                        return (
+                          <button
+                            key={command.id}
+                            onClick={() => handleCommandSelect(command)}
+                            className={cn(
+                              "w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors text-sm font-medium",
+                              isSelected
+                                ? "bg-red-500/20 text-white border border-red-500/35"
+                                : "text-gray-300 hover:bg-white/5"
+                            )}
+                          >
+                            <div className={cn("p-1.5 rounded-lg", isSelected ? "text-red-400" : "text-gray-400")}>
+                              {command.icon}
+                            </div>
+                            <span className="flex-1 truncate">{command.name}</span>
+                            <ArrowRight size={14} className={cn("text-gray-500", isSelected && "text-red-400")} />
+                          </button>
+                        );
+                      })}
+                    </div>
+                  ))
+                )}
+              </div>
 
-    </>
+              {/* Footer navigation guide */}
+              <div className="px-4 py-2.5 border-t border-white/8 flex items-center justify-between text-[11px] text-gray-500 font-medium">
+                <span className="flex items-center gap-1">
+                  <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">↑↓</kbd> Navigate
+                </span>
+                <span className="flex items-center gap-1">
+                  <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">↵</kbd> Select
+                </span>
+                <span className="flex items-center gap-1">
+                  <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">Esc</kbd> Close
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
   );
 }
 
-// Helper function to get icon for section
 function getIconForSection(href: string) {
   const iconMap: Record<string, React.ReactNode> = {
-    "#home": <Home size={18} />,
-    "#about": <User size={18} />,
-    "#skills": <Code size={18} />,
-    "#projects": <Briefcase size={18} />,
-    "#education": <GraduationCap size={18} />,
-    "#contact": <Mail size={18} />,
+    "#home": <Home size={16} />,
+    "#about": <User size={16} />,
+    "#skills": <Code size={16} />,
+    "#projects": <Briefcase size={16} />,
+    "#education": <GraduationCap size={16} />,
+    "#contact": <Mail size={16} />,
   };
-  return iconMap[href] || <ArrowRight size={18} />;
+  return iconMap[href] || <ArrowRight size={16} />;
 }
-

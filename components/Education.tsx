@@ -1,102 +1,109 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { GraduationCap, Calendar, Award } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { GraduationCap, Calendar, Award, Building2 } from "lucide-react";
 import { EDUCATION } from "@/data/constants";
 import SectionWrapper from "./SectionWrapper";
 
 export default function Education() {
+  const reduceMotion = useReducedMotion();
+
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.22, delayChildren: 0.1 } },
+    visible: {
+      opacity: 1,
+      transition: reduceMotion
+        ? { duration: 0 }
+        : { staggerChildren: 0.15, delayChildren: 0.1 },
+    },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -50, scale: 0.95 },
-    visible: { opacity: 1, x: 0, scale: 1, transition: { duration: 0.75, ease: [0.25, 0.1, 0.25, 1] } },
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: reduceMotion
+        ? { duration: 0 }
+        : { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+    },
   };
-
-  const CARD_ACCENTS = [
-    { bar: "bg-red-500", border: "border-red-500/20", glow: "from-red-500/8", iconBg: "bg-red-500/15 border-red-500/25", iconColor: "text-red-400", gradeColor: "text-red-300" },
-    { bar: "bg-orange-500", border: "border-orange-500/20", glow: "from-orange-500/8", iconBg: "bg-orange-500/15 border-orange-500/25", iconColor: "text-orange-400", gradeColor: "text-orange-300" },
-  ];
 
   return (
     <SectionWrapper id="education">
-      <motion.h2
-        className="text-4xl md:text-5xl lg:text-6xl font-bold mb-14 text-center tracking-tight"
-        initial={{ opacity: 0, y: 36 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1] }}
-      >
-        <span className="text-gradient-primary">Education</span>
-      </motion.h2>
+      <div className="max-w-4xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-14">
+          <p className="text-red-400 text-xs font-bold uppercase tracking-[0.2em] mb-2">
+            Academic Background
+          </p>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-heading">
+            <span className="text-gradient-primary">Education</span>
+          </h2>
+        </div>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px", amount: 0.15 }}
-        className="max-w-4xl mx-auto space-y-6"
-      >
-        {EDUCATION.map((edu, index) => {
-          const accent = CARD_ACCENTS[index] ?? CARD_ACCENTS[0];
-          return (
+        {/* Education Timeline */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          className="space-y-6 relative"
+        >
+          {EDUCATION.map((edu, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className={`relative glass rounded-2xl p-6 md:p-8 border ${accent.border} hover:border-opacity-60 transition-all duration-400 group overflow-hidden`}
-              whileHover={{ scale: 1.015, x: 8, y: -4 }}
+              whileHover={reduceMotion ? {} : { y: -3 }}
+              className="bento-card rounded-3xl p-6 sm:p-8 border border-white/8 hover:border-red-500/35 transition-all duration-300 relative group overflow-hidden"
             >
-              {/* Left accent bar */}
-              <div className={`absolute top-0 bottom-0 left-0 w-[3px] ${accent.bar} opacity-50 group-hover:opacity-100 transition-opacity duration-300 rounded-l-2xl`} />
-              {/* Hover glow */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${accent.glow} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400`} />
+              {/* Left Crimson Accent Line */}
+              <div
+                className="absolute top-0 bottom-0 left-0 w-[4px] bg-red-600 rounded-l-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                aria-hidden="true"
+              />
 
-              <div className="flex items-start gap-5 relative z-10 pl-2">
-                {/* Icon */}
-                <div className={`shrink-0 p-4 rounded-xl border ${accent.iconBg}`}>
-                  <GraduationCap size={26} className={accent.iconColor} />
+              {/* Ambient Glow */}
+              <div
+                className="absolute inset-0 bg-gradient-to-br from-red-500/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                aria-hidden="true"
+              />
+
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 relative z-10 pl-2 sm:pl-3">
+                <div className="flex items-start gap-4">
+                  {/* Icon */}
+                  <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/25 text-red-400 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300 shrink-0 mt-1 sm:mt-0">
+                    <GraduationCap size={24} />
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-white font-heading tracking-tight">
+                      {edu.degree}
+                    </h3>
+                    <p className="text-red-400 font-semibold text-sm sm:text-base mt-1 flex items-center gap-1.5">
+                      <Building2 size={15} />
+                      <span>{edu.institution}</span>
+                    </p>
+                  </div>
                 </div>
 
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg md:text-xl font-bold text-gray-100 mb-1.5 tracking-tight">
-                    {edu.degree}
-                  </h3>
-                  <p className={`font-semibold text-base mb-3 ${accent.iconColor}`}>
-                    {edu.institution}
-                  </p>
+                {/* Grade & Period Details */}
+                <div className="flex flex-wrap sm:flex-col items-start sm:items-end gap-3 sm:gap-2 border-t sm:border-t-0 border-white/8 pt-4 sm:pt-0">
+                  <div className="flex items-center gap-1.5 text-gray-400 text-xs sm:text-sm font-medium bg-white/5 px-3 py-1.5 rounded-lg border border-white/8">
+                    <Calendar size={14} className="text-red-400" />
+                    <span>{edu.period}</span>
+                  </div>
 
-                  <div className="flex flex-wrap gap-3">
-                    {/* Period */}
-                    <div className="flex items-center gap-1.5 text-gray-500 text-sm">
-                      <Calendar size={13} />
-                      <span>{edu.period}</span>
-                    </div>
-                    {/* Grade badge */}
-                    <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full border ${accent.iconBg} text-sm font-bold`}>
-                      <Award size={13} className={accent.gradeColor} />
-                      <span className={accent.gradeColor}>{edu.grade}</span>
-                    </div>
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs sm:text-sm font-bold">
+                    <Award size={14} />
+                    <span>{edu.grade}</span>
                   </div>
                 </div>
               </div>
-
-              {/* Timeline connector */}
-              {index < EDUCATION.length - 1 && (
-                <motion.div
-                  className={`absolute left-9 md:left-10 -bottom-6 w-[2px] h-6 ${accent.bar} opacity-30`}
-                  initial={{ scaleY: 0, originY: 0 }}
-                  whileInView={{ scaleY: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.22 + 0.5, duration: 0.6 }}
-                />
-              )}
             </motion.div>
-          );
-        })}
-      </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </SectionWrapper>
   );
 }

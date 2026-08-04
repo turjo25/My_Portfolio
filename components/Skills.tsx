@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   Code2,
   Palette,
@@ -8,149 +8,111 @@ import {
   Database,
   Wrench,
   Trophy,
+  Terminal,
 } from "lucide-react";
 import { SKILL_CATEGORIES } from "@/data/constants";
 import SectionWrapper from "./SectionWrapper";
 import SkillBadge from "./SkillBadge";
 
-const CATEGORY_ACCENTS: Record<
-  string,
-  {
-    Icon: React.ComponentType<any>;
-    border: string;
-    glow: string;
-    bar: string;
-  }
-> = {
-  "Programming Languages": {
-    Icon: Code2,
-    border: "border-red-500/20",
-    glow: "from-red-500/8",
-    bar: "bg-red-500",
-  },
-  Frontend: {
-    Icon: Palette,
-    border: "border-rose-500/20",
-    glow: "from-rose-500/8",
-    bar: "bg-rose-500",
-  },
-  Backend: {
-    Icon: Settings,
-    border: "border-orange-500/20",
-    glow: "from-orange-500/8",
-    bar: "bg-orange-500",
-  },
-  Databases: {
-    Icon: Database,
-    border: "border-red-500/20",
-    glow: "from-red-500/8",
-    bar: "bg-red-500",
-  },
-  Tools: {
-    Icon: Wrench,
-    border: "border-gray-500/20",
-    glow: "from-gray-500/8",
-    bar: "bg-gray-500",
-  },
-  "Competitive Programming": {
-    Icon: Trophy,
-    border: "border-amber-500/20",
-    glow: "from-amber-500/8",
-    bar: "bg-amber-500",
-  },
+const CATEGORY_ICONS: Record<string, React.ComponentType<{ size?: number | string; className?: string }>> = {
+  "Programming Languages": Code2,
+  Frontend: Palette,
+  Backend: Settings,
+  Databases: Database,
+  Tools: Wrench,
+  "Competitive Programming": Trophy,
 };
 
 export default function Skills() {
+  const reduceMotion = useReducedMotion();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+      transition: reduceMotion
+        ? { duration: 0 }
+        : { staggerChildren: 0.08, delayChildren: 0.1 },
     },
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 44, scale: 0.92 },
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 16 },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      transition: { duration: 0.65, ease: [0.25, 0.1, 0.25, 1] },
+      transition: reduceMotion
+        ? { duration: 0 }
+        : { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
   return (
     <SectionWrapper id="skills">
-      <motion.h2
-        className="text-4xl md:text-5xl lg:text-6xl font-bold mb-14 text-center tracking-tight"
-        initial={{ opacity: 0, y: 36 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1] }}
-      >
-        <span className="text-gradient-primary">Skills</span>
-      </motion.h2>
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-14">
+          <p className="text-red-400 text-xs font-bold uppercase tracking-[0.2em] mb-2">
+            Technical Expertise
+          </p>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-heading">
+            <span className="text-gradient-primary">Skills & Technologies</span>
+          </h2>
+        </div>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px", amount: 0.15 }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
-      >
-        {SKILL_CATEGORIES.map((category, index) => {
-          const accent = CATEGORY_ACCENTS[category.name] ?? {
-            Icon: Trophy,
-            border: "border-white/10",
-            glow: "from-red-500/8",
-            bar: "bg-red-500",
-          };
-          return (
-            <motion.div
-              key={category.name}
-              variants={cardVariants}
-              className={`glass rounded-2xl p-6 md:p-7 border ${accent.border} hover:border-opacity-60 transition-all duration-400 relative overflow-hidden group`}
-              whileHover={{ scale: 1.03, y: -7 }}
-            >
-              {/* Top accent bar */}
-              <div
-                className={`absolute top-0 left-0 right-0 h-[2px] ${accent.bar} opacity-40 group-hover:opacity-80 transition-opacity duration-300`}
-              />
-              {/* Hover glow */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${accent.glow} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400`}
-              />
+        {/* Skills Bento Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+        >
+          {SKILL_CATEGORIES.map((category) => {
+            const IconComponent = CATEGORY_ICONS[category.name] ?? Terminal;
 
-              <div className="relative z-10">
-                <div className="flex items-center gap-2.5 mb-5">
-                  <accent.Icon size={20} className="text-white" />
-                  <h3 className="text-[15px] font-bold text-gray-100 tracking-tight">
-                    {category.name}
-                  </h3>
+            return (
+              <motion.div
+                key={category.name}
+                variants={cardVariants}
+                whileHover={reduceMotion ? {} : { y: -4, scale: 1.015 }}
+                className="bento-card rounded-2xl p-6 border border-white/8 hover:border-red-500/35 transition-all duration-300 relative group overflow-hidden flex flex-col justify-between"
+              >
+                {/* Top Crimson Accent Line */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-300"
+                  aria-hidden="true"
+                />
+
+                {/* Ambient Glow */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-br from-red-500/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  aria-hidden="true"
+                />
+
+                <div className="relative z-10">
+                  {/* Category Header */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-9 h-9 rounded-xl bg-red-500/10 border border-red-500/25 flex items-center justify-center text-red-400 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300 shrink-0">
+                      <IconComponent size={18} />
+                    </div>
+                    <h3 className="text-base font-bold text-gray-100 font-heading tracking-tight">
+                      {category.name}
+                    </h3>
+                  </div>
+
+                  {/* Skill Badges */}
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill) => (
+                      <SkillBadge key={skill} skill={skill} />
+                    ))}
+                  </div>
                 </div>
-
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0 },
-                    visible: {
-                      opacity: 1,
-                      transition: { staggerChildren: 0.05, delayChildren: 0.2 },
-                    },
-                  }}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  className="flex flex-wrap gap-2"
-                >
-                  {category.skills.map((skill) => (
-                    <SkillBadge key={skill} skill={skill} />
-                  ))}
-                </motion.div>
-              </div>
-            </motion.div>
-          );
-        })}
-      </motion.div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
     </SectionWrapper>
   );
 }

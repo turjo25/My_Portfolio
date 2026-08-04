@@ -3,14 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0a;
+  --background: #08090d;
   --foreground: #f3f4f6;
   --primary: #ef4444;
   --primary-hover: #f87171;
-  --secondary: #171717;
   --accent: #dc2626;
-  --surface: #111827;
-  --surface-hover: #1f2937;
+  --surface: #0f131c;
+  --surface-border: rgba(255, 255, 255, 0.08);
 }
 
 * {
@@ -23,143 +22,193 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
   overflow-x: hidden;
+  background-color: var(--background);
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", sans-serif;
+  background-color: var(--background);
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "ss01" 1;
   letter-spacing: -0.012em;
   line-height: 1.65;
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Fixed mesh background — gives depth instead of flat black */
-body::before {
-  content: "";
+/* ── 2026 Aurora Gradient Mesh Background (CSS-only, GPU accelerated) ── */
+.aurora-mesh {
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(239, 68, 68, 0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(220, 38, 38, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(20, 20, 20, 0.3) 0%, transparent 100%);
   pointer-events: none;
   z-index: 0;
+  overflow: hidden;
 }
 
-/* Make sure content sits above the mesh */
+.aurora-mesh::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: 
+    radial-gradient(ellipse 60% 40% at 20% 10%, rgba(239, 68, 68, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 80% 30%, rgba(249, 115, 22, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 85%, rgba(220, 38, 38, 0.07) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(10, 12, 18, 0.95) 0%, #08090d 100%);
+  filter: blur(60px);
+  transform-gpu: translate3d(0, 0, 0);
+  animation: aurora 25s ease-in-out infinite alternate;
+}
+
+/* Noise overlay for depth */
+.aurora-mesh::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Content layer stacking */
 body > * {
   position: relative;
   z-index: 1;
 }
 
-/* Typography */
+/* Typography Hierarchy */
 h1, h2, h3, h4, h5, h6 {
-  letter-spacing: -0.025em;
+  font-family: var(--font-outfit), var(--font-inter), sans-serif;
+  letter-spacing: -0.03em;
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.1;
 }
 
 p {
-  letter-spacing: -0.008em;
+  letter-spacing: -0.01em;
   line-height: 1.7;
 }
 
-/* Custom scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: #08090d;
 }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
   border-radius: 4px;
-  border: 2px solid var(--background);
+  border: 2px solid #08090d;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #f87171, #b91c1c);
+  background: linear-gradient(180deg, #f87171 0%, #b91c1c 100%);
 }
 
 /* Selection */
 ::selection {
   background: rgba(239, 68, 68, 0.35);
-  color: white;
+  color: #ffffff;
+}
+
+/* Focus States */
+:focus-visible {
+  outline: 2px solid #ef4444;
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 /* ── Utility Classes ── */
 @layer utilities {
-
-  /* Glass — Authentic frosted glassmorphism */
+  /* Ultra-clean Glassmorphism */
   .glass {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(15, 19, 28, 0.65);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  .glass-card {
+    background: rgba(15, 19, 28, 0.75);
+    backdrop-filter: blur(24px) saturate(190%);
+    -webkit-backdrop-filter: blur(24px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.6);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(239, 68, 68, 0.35);
+    box-shadow: 0 20px 48px -12px rgba(239, 68, 68, 0.12);
   }
 
   .glass-strong {
-    background: rgba(13, 17, 23, 0.85);
-    backdrop-filter: blur(32px) saturate(180%);
-    -webkit-backdrop-filter: blur(32px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(10, 13, 20, 0.92);
+    backdrop-filter: blur(32px) saturate(190%);
+    -webkit-backdrop-filter: blur(32px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
 
-  /* Card surface — slightly lighter than bg for card depth */
-  .surface {
-    background: rgba(255, 255, 255, 0.04);
+  /* Bento Grid Card */
+  .bento-card {
+    background: linear-gradient(135deg, rgba(20, 26, 38, 0.7) 0%, rgba(12, 15, 22, 0.8) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .surface-hover:hover {
-    background: rgba(255, 255, 255, 0.075);
-    border-color: rgba(255, 255, 255, 0.14);
+  .bento-card:hover {
+    border-color: rgba(239, 68, 68, 0.3);
+    box-shadow: 0 12px 40px -10px rgba(239, 68, 68, 0.15);
   }
 
-  /* Gradient accent backgrounds for cards */
-  .gradient-accent {
-    background: linear-gradient(
-      135deg,
-      rgba(239, 68, 68, 0.1) 0%,
-      rgba(220, 38, 38, 0.07) 100%
-    );
-  }
-
-  .gradient-accent-green {
-    background: linear-gradient(
-      135deg,
-      rgba(52, 211, 153, 0.08) 0%,
-      rgba(16, 185, 129, 0.05) 100%
-    );
-  }
-
-  /* Name / headline gradient */
+  /* Single Signature Accent Text Gradients */
   .text-gradient {
-    background: linear-gradient(135deg, #ffffff 0%, #c7d8ff 50%, #a5b4fc 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #94a3b8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Section title gradient */
   .text-gradient-primary {
-    background: linear-gradient(135deg, #fca5a5 0%, #ef4444 40%, #dc2626 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #fca5a5 35%, #ef4444 80%, #b91c1c 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Glow ring helpers */
-  .ring-glow-primary {
-    box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.3), 0 0 32px rgba(239, 68, 68, 0.15);
+  .text-gradient-crimson {
+    background: linear-gradient(135deg, #f87171 0%, #ef4444 50%, #dc2626 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  .ring-glow-secondary {
-    box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.3), 0 0 32px rgba(220, 38, 38, 0.15);
+  /* Glow Helper */
+  .glow-crimson {
+    box-shadow: 0 0 25px -5px rgba(239, 68, 68, 0.4);
+  }
+
+  .glow-crimson-subtle {
+    box-shadow: 0 0 30px 0 rgba(239, 68, 68, 0.15);
+  }
+}
+
+/* ── Accessibility: Prefers Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .aurora-mesh::before {
+    animation: none !important;
   }
 }
