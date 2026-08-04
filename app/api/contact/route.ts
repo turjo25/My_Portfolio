@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+export const dynamic = "force-dynamic";
+
 /**
  * Next.js API Route Handler for Contact Form Submissions
  * Location: /app/api/contact/route.ts
