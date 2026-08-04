@@ -55,21 +55,21 @@ export default function Stats() {
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 whileHover={reduceMotion ? {} : { y: -4, scale: 1.02 }}
-                className="bento-card rounded-2xl p-5 md:p-6 border border-white/8 hover:border-red-500/35 transition-all duration-300 relative group overflow-hidden"
+                className="bento-card rounded-2xl p-5 md:p-6 border border-indigo-500/20 hover:border-indigo-500/45 transition-all duration-300 relative group overflow-hidden shadow-lg hover:shadow-indigo-500/10"
               >
                 {/* Glow Overlay */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  className="absolute inset-0 bg-gradient-to-br from-indigo-500/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   aria-hidden="true"
                 />
 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col justify-between h-full gap-4">
                   <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/25 flex items-center justify-center text-red-400 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300">
+                    <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300">
                       <Icon size={20} />
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-red-300/80 bg-red-500/10 px-2 py-0.5 rounded-full border border-red-500/20">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-300/90 bg-indigo-500/10 px-2 py-0.5 rounded-full border border-indigo-500/25">
                       {stat.badge}
                     </span>
                   </div>

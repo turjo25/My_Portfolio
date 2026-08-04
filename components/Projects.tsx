@@ -32,8 +32,8 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-14">
-          <p className="text-red-400 text-xs font-bold uppercase tracking-[0.2em] mb-2 flex items-center justify-center gap-1.5">
-            <Sparkles size={14} />
+          <p className="text-indigo-400 text-xs font-bold uppercase tracking-[0.2em] mb-2 flex items-center justify-center gap-1.5">
+            <Sparkles size={14} className="text-indigo-400" />
             Featured Work
           </p>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-heading">
@@ -65,7 +65,7 @@ export default function Projects() {
         {/* View All Projects Button */}
         <div className="flex justify-center mt-14">
           <Link href="/projects" className="group">
-            <button className="relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-red-600/10 hover:bg-red-600 border border-red-500/30 hover:border-red-500 rounded-full text-red-300 hover:text-white font-bold text-sm tracking-wide transition-all duration-300 shadow-lg shadow-red-600/15 hover:shadow-red-600/35">
+            <button className="relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-indigo-600/15 hover:bg-indigo-600 border border-indigo-500/35 hover:border-indigo-500 rounded-full text-indigo-300 hover:text-white font-bold text-sm tracking-wide transition-all duration-300 shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/40">
               <span>View All Projects ({PROJECTS.length})</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </button>

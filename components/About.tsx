@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import { Mail, Phone, MapPin, Linkedin, Github, Sparkles, UserCheck } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, Sparkles } from "lucide-react";
 import { CONTACT_INFO, ABOUT_TEXT, BACKGROUND, PERSONAL_INFO } from "@/data/constants";
 import SectionWrapper from "./SectionWrapper";
 
@@ -37,7 +37,8 @@ export default function About() {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-14">
-          <p className="text-red-400 text-xs font-bold uppercase tracking-[0.2em] mb-2">
+          <p className="text-indigo-400 text-xs font-bold uppercase tracking-[0.2em] mb-2 flex items-center justify-center gap-1.5">
+            <Sparkles size={14} className="text-indigo-400" />
             Background & Philosophy
           </p>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-heading">
@@ -57,16 +58,16 @@ export default function About() {
           {/* Bento Tile 1: Profile & Identity Card (Lg Col 4) */}
           <motion.div
             variants={itemVariants}
-            className="lg:col-span-4 bento-card rounded-3xl p-7 flex flex-col items-center justify-between text-center relative overflow-hidden group border border-white/8 hover:border-red-500/30"
+            className="lg:col-span-4 bento-card rounded-3xl p-7 flex flex-col items-center justify-between text-center relative overflow-hidden group border border-indigo-500/20 hover:border-indigo-500/40 shadow-lg hover:shadow-indigo-500/10"
           >
             <div
-              className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+              className="absolute inset-0 bg-gradient-to-br from-indigo-500/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
               aria-hidden="true"
             />
 
             {/* Profile Avatar */}
-            <div className="relative w-36 h-36 rounded-full p-[3px] bg-gradient-to-br from-red-500 to-orange-500 shadow-xl shadow-red-500/20 mb-4">
-              <div className="w-full h-full rounded-full overflow-hidden bg-[#0a0d14] border-2 border-[#0a0d14]">
+            <div className="relative w-36 h-36 rounded-full p-[3px] bg-gradient-to-br from-indigo-500 via-violet-500 to-indigo-400 shadow-xl shadow-indigo-500/25 mb-4">
+              <div className="w-full h-full rounded-full overflow-hidden bg-[#0b0c10] border-2 border-[#0b0c10]">
                 {!imageError ? (
                   <Image
                     src="/profile.jpg"
@@ -78,7 +79,7 @@ export default function About() {
                     onError={() => setImageError(true)}
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-red-600/30 to-orange-600/30">
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-indigo-600/30 to-violet-600/30">
                     <span className="text-3xl font-bold text-gradient-primary">ST</span>
                   </div>
                 )}
@@ -89,7 +90,7 @@ export default function About() {
               <h3 className="text-xl font-bold text-white font-heading">
                 {PERSONAL_INFO.name}
               </h3>
-              <p className="text-red-400 text-sm font-semibold mt-1">
+              <p className="text-indigo-400 text-sm font-semibold mt-1">
                 {PERSONAL_INFO.role}
               </p>
 
@@ -106,14 +107,14 @@ export default function About() {
             </div>
 
             {/* Social Link Chips */}
-            <div className="flex justify-center gap-3 mt-6 pt-5 border-t border-white/8 w-full relative z-10">
+            <div className="flex justify-center gap-3 mt-6 pt-5 border-t border-indigo-500/20 w-full relative z-10">
               {CONTACT_INFO.linkedin && (
                 <a
                   href={CONTACT_INFO.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn Profile"
-                  className="p-3 glass rounded-xl text-gray-300 hover:text-white hover:bg-red-500/20 hover:border-red-500/40 transition-all duration-300"
+                  className="p-3 glass rounded-xl text-gray-300 hover:text-white hover:bg-indigo-500/20 hover:border-indigo-500/40 transition-all duration-300"
                 >
                   <Linkedin size={18} />
                 </a>
@@ -124,7 +125,7 @@ export default function About() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub Profile"
-                  className="p-3 glass rounded-xl text-gray-300 hover:text-white hover:bg-red-500/20 hover:border-red-500/40 transition-all duration-300"
+                  className="p-3 glass rounded-xl text-gray-300 hover:text-white hover:bg-indigo-500/20 hover:border-indigo-500/40 transition-all duration-300"
                 >
                   <Github size={18} />
                 </a>
@@ -135,15 +136,15 @@ export default function About() {
           {/* Bento Tile 2: Main Bio & Engineering Mindset (Lg Col 8) */}
           <motion.div
             variants={itemVariants}
-            className="lg:col-span-8 bento-card rounded-3xl p-7 sm:p-9 relative overflow-hidden border border-white/8 hover:border-red-500/30 flex flex-col justify-between"
+            className="lg:col-span-8 bento-card rounded-3xl p-7 sm:p-9 relative overflow-hidden border border-indigo-500/20 hover:border-indigo-500/40 flex flex-col justify-between shadow-lg hover:shadow-indigo-500/10"
           >
             <div
-              className="absolute top-0 right-0 w-80 h-80 bg-red-500/8 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"
+              className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"
               aria-hidden="true"
             />
 
             <div>
-              <div className="flex items-center gap-2 mb-4 text-red-400">
+              <div className="flex items-center gap-2 mb-4 text-indigo-400">
                 <Sparkles size={18} />
                 <span className="text-xs font-bold uppercase tracking-widest">
                   Engineering Profile
@@ -159,7 +160,7 @@ export default function About() {
             </div>
 
             {/* Core Competencies Tech Badges */}
-            <div className="mt-8 pt-6 border-t border-white/8">
+            <div className="mt-8 pt-6 border-t border-indigo-500/20">
               <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-3">
                 Core Stack Focus
               </p>
@@ -176,7 +177,7 @@ export default function About() {
                 ].map((tech) => (
                   <span
                     key={tech}
-                    className="px-3.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-200 text-xs font-semibold hover:border-red-500/40 hover:bg-red-500/10 transition-colors duration-300"
+                    className="px-3.5 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/25 text-gray-200 text-xs font-semibold hover:border-indigo-500/50 hover:bg-indigo-500/20 hover:text-white transition-colors duration-300"
                   >
                     {tech}
                   </span>
@@ -191,9 +192,9 @@ export default function About() {
               href={`https://maps.google.com/?q=${encodeURIComponent(CONTACT_INFO.location)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bento-card rounded-2xl p-5 border border-white/8 hover:border-red-500/30 flex items-center gap-4 transition-all duration-300 group block h-full"
+              className="bento-card rounded-2xl p-5 border border-indigo-500/20 hover:border-indigo-500/40 flex items-center gap-4 transition-all duration-300 group block h-full shadow-md hover:shadow-indigo-500/10"
             >
-              <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/25 text-red-400 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300 shrink-0">
+              <div className="p-3.5 rounded-xl bg-indigo-500/10 border border-indigo-500/25 text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300 shrink-0">
                 <MapPin size={20} />
               </div>
               <div className="min-w-0">
@@ -206,9 +207,9 @@ export default function About() {
           <motion.div variants={itemVariants} className="lg:col-span-4">
             <a
               href={`mailto:${CONTACT_INFO.email}`}
-              className="bento-card rounded-2xl p-5 border border-white/8 hover:border-red-500/30 flex items-center gap-4 transition-all duration-300 group block h-full"
+              className="bento-card rounded-2xl p-5 border border-indigo-500/20 hover:border-indigo-500/40 flex items-center gap-4 transition-all duration-300 group block h-full shadow-md hover:shadow-indigo-500/10"
             >
-              <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/25 text-red-400 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300 shrink-0">
+              <div className="p-3.5 rounded-xl bg-indigo-500/10 border border-indigo-500/25 text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300 shrink-0">
                 <Mail size={20} />
               </div>
               <div className="min-w-0">
@@ -221,9 +222,9 @@ export default function About() {
           <motion.div variants={itemVariants} className="lg:col-span-4">
             <a
               href={`tel:${CONTACT_INFO.phone}`}
-              className="bento-card rounded-2xl p-5 border border-white/8 hover:border-red-500/30 flex items-center gap-4 transition-all duration-300 group block h-full"
+              className="bento-card rounded-2xl p-5 border border-indigo-500/20 hover:border-indigo-500/40 flex items-center gap-4 transition-all duration-300 group block h-full shadow-md hover:shadow-indigo-500/10"
             >
-              <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/25 text-red-400 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300 shrink-0">
+              <div className="p-3.5 rounded-xl bg-indigo-500/10 border border-indigo-500/25 text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300 shrink-0">
                 <Phone size={20} />
               </div>
               <div className="min-w-0">

@@ -69,7 +69,7 @@ export default function FloatingSocialDock() {
                 rel="noopener noreferrer"
                 onMouseEnter={() => setHoveredId(link.id)}
                 onMouseLeave={() => setHoveredId(null)}
-                className="glass rounded-full p-3.5 shadow-lg border border-white/10 hover:border-red-500/40 hover:bg-red-500/20 text-gray-300 hover:text-white transition-all duration-200 relative group flex items-center justify-center"
+                className="glass rounded-full p-3.5 shadow-lg border border-indigo-500/20 hover:border-indigo-500/50 hover:bg-indigo-500/20 text-gray-300 hover:text-white transition-all duration-200 relative group flex items-center justify-center"
                 initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
@@ -86,7 +86,7 @@ export default function FloatingSocialDock() {
                     initial={{ opacity: 0, x: -8 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -8 }}
-                    className="absolute left-full ml-3 top-1/2 -translate-y-1/2 glass rounded-lg px-3 py-1 text-white text-xs font-semibold whitespace-nowrap pointer-events-none border border-white/10"
+                    className="absolute left-full ml-3 top-1/2 -translate-y-1/2 glass rounded-lg px-3 py-1 text-white text-xs font-semibold whitespace-nowrap pointer-events-none border border-indigo-500/30"
                   >
                     {link.label}
                   </motion.div>
@@ -100,8 +100,10 @@ export default function FloatingSocialDock() {
       {/* Main Toggle Button */}
       <motion.button
         onClick={() => setIsExpanded(!isExpanded)}
-        className={`glass rounded-full p-3.5 shadow-xl border border-white/12 text-white transition-all duration-300 relative ${
-          isExpanded ? "bg-red-600 border-red-500 text-white shadow-red-600/30" : "hover:bg-red-500/20 hover:border-red-500/40"
+        className={`glass rounded-full p-3.5 shadow-xl border transition-all duration-300 relative ${
+          isExpanded
+            ? "bg-indigo-600 border-indigo-500 text-white shadow-indigo-600/35"
+            : "border-indigo-500/25 hover:bg-indigo-500/20 hover:border-indigo-500/50 text-indigo-300 hover:text-white"
         }`}
         whileHover={reduceMotion ? {} : { scale: 1.08 }}
         whileTap={{ scale: 0.95 }}

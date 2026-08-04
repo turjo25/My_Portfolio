@@ -42,9 +42,9 @@ export default function Hero() {
       id="home"
       className="flex flex-col items-center justify-center relative py-12 md:py-24 mt-4 md:mt-8 min-h-[calc(100vh-80px)]"
     >
-      {/* Subtle Aurora Ambient Glow (Transform/Opacity only) */}
+      {/* Cyber Indigo Ambient Glow */}
       <div
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-red-600/10 blur-[130px] pointer-events-none transform-gpu"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-indigo-600/15 blur-[130px] pointer-events-none transform-gpu"
         aria-hidden="true"
       />
 
@@ -84,8 +84,8 @@ export default function Hero() {
 
           {/* Subheading Badge */}
           <motion.div variants={itemVariants} className="mb-6">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-red-500/30 bg-red-500/10 text-red-300 text-xs sm:text-sm font-semibold tracking-wider uppercase">
-              <Sparkles size={14} className="text-red-400" />
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs sm:text-sm font-semibold tracking-wider uppercase">
+              <Sparkles size={14} className="text-indigo-400" />
               {PERSONAL_INFO.role}
             </span>
           </motion.div>
@@ -106,7 +106,7 @@ export default function Hero() {
             {/* View Projects */}
             <motion.button
               onClick={() => scrollToSection("#projects")}
-              className="h-12 px-7 bg-red-600 hover:bg-red-500 text-white rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2.5 shadow-lg shadow-red-600/30 hover:shadow-red-500/50 hover:scale-[1.02] active:scale-[0.98] border border-red-400/40"
+              className="h-12 px-7 bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 hover:from-indigo-500 hover:to-violet-500 text-white rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2.5 shadow-lg shadow-indigo-600/30 hover:shadow-indigo-500/50 hover:scale-[1.02] active:scale-[0.98] border border-indigo-400/40"
               whileHover={reduceMotion ? {} : { scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
@@ -116,10 +116,10 @@ export default function Hero() {
 
             {/* Resume */}
             <motion.a
-              href="https://drive.google.com/file/d/1ttc3FSHssoxe0Uv2GvpuiYpDLNjng7rH/view?usp=sharing"
+              href="https://drive.google.com/file/d/1fJ5NtQDldbw-fQqUfga0iIKkCF8EJsc2/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="h-12 px-7 glass border border-red-500/30 hover:border-red-400/60 text-red-300 hover:text-white rounded-xl font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2.5 hover:bg-red-500/10"
+              className="h-12 px-7 glass border border-indigo-500/30 hover:border-indigo-400/60 text-indigo-300 hover:text-white rounded-xl font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2.5 hover:bg-indigo-500/10"
               whileHover={reduceMotion ? {} : { scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
@@ -130,7 +130,7 @@ export default function Hero() {
             {/* Contact */}
             <motion.button
               onClick={() => scrollToSection("#contact")}
-              className="h-12 px-7 glass border border-white/12 hover:border-white/25 text-gray-300 hover:text-white rounded-xl font-semibold text-sm transition-all duration-300 hover:bg-white/5 flex items-center justify-center gap-2.5"
+              className="h-12 px-7 glass border border-indigo-500/20 hover:border-indigo-500/40 text-gray-300 hover:text-white rounded-xl font-semibold text-sm transition-all duration-300 hover:bg-indigo-500/10 flex items-center justify-center gap-2.5"
               whileHover={reduceMotion ? {} : { scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
@@ -150,13 +150,13 @@ export default function Hero() {
           <div className="relative">
             {/* Background Halo */}
             <div
-              className="absolute inset-0 rounded-full bg-gradient-to-br from-red-600/30 via-red-500/20 to-orange-500/20 blur-[50px] scale-125 pointer-events-none transform-gpu"
+              className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-600/30 via-violet-500/25 to-indigo-500/20 blur-[50px] scale-125 pointer-events-none transform-gpu"
               aria-hidden="true"
             />
 
             {/* Profile Avatar Frame */}
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full p-[3px] bg-gradient-to-br from-red-500 via-rose-500 to-orange-500 shadow-2xl shadow-red-600/25">
-              <div className="w-full h-full rounded-full overflow-hidden bg-[#0a0d14] border-[4px] border-[#0a0d14] relative">
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full p-[3px] bg-gradient-to-br from-indigo-500 via-violet-500 to-indigo-400 shadow-2xl shadow-indigo-600/30">
+              <div className="w-full h-full rounded-full overflow-hidden bg-[#0b0c10] border-[4px] border-[#0b0c10] relative">
                 {!imageError ? (
                   <Image
                     src="/profile.jpg"
@@ -169,7 +169,7 @@ export default function Hero() {
                     onError={() => setImageError(true)}
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-red-600/20 to-orange-600/20">
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-indigo-600/20 to-violet-600/20">
                     <span className="text-5xl font-extrabold text-gradient-primary">ST</span>
                   </div>
                 )}
@@ -178,7 +178,7 @@ export default function Hero() {
 
             {/* Micro Badge 1 — Projects */}
             <motion.div
-              className="absolute -bottom-2 -right-2 glass-card rounded-2xl px-4 py-2.5 border border-red-500/30 shadow-xl backdrop-blur-xl"
+              className="absolute -bottom-2 -right-2 glass-card rounded-2xl px-4 py-2.5 border border-indigo-500/30 shadow-xl backdrop-blur-xl"
               initial={reduceMotion ? {} : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.4 }}
@@ -190,14 +190,14 @@ export default function Hero() {
 
             {/* Micro Badge 2 — Problem Solving */}
             <motion.div
-              className="absolute -top-2 -left-4 glass-card rounded-2xl px-4 py-2.5 border border-red-500/30 shadow-xl backdrop-blur-xl"
+              className="absolute -top-2 -left-4 glass-card rounded-2xl px-4 py-2.5 border border-indigo-500/30 shadow-xl backdrop-blur-xl"
               initial={reduceMotion ? {} : { opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.4 }}
               whileHover={reduceMotion ? {} : { scale: 1.05 }}
             >
               <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">CP & LeetCode</p>
-              <p className="text-red-400 font-extrabold text-lg leading-none mt-0.5">500+ Solved 🏆</p>
+              <p className="text-indigo-400 font-extrabold text-lg leading-none mt-0.5">500+ Solved 🏆</p>
             </motion.div>
           </div>
         </motion.div>
@@ -214,7 +214,7 @@ export default function Hero() {
         <button
           onClick={() => scrollToSection("#about")}
           aria-label="Scroll down to About section"
-          className="p-3.5 rounded-full glass border border-white/10 hover:border-red-500/40 hover:bg-red-500/10 text-gray-400 hover:text-red-400 transition-all duration-300 group"
+          className="p-3.5 rounded-full glass border border-indigo-500/20 hover:border-indigo-500/50 hover:bg-indigo-500/10 text-gray-400 hover:text-indigo-400 transition-all duration-300 group"
         >
           <ArrowDown size={18} className="group-hover:translate-y-0.5 transition-transform duration-300" />
         </button>

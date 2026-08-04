@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen overflow-x-hidden pt-20 md:pt-24 pb-16 flex flex-col bg-[#08090d] relative">
+    <main className="min-h-screen overflow-x-hidden pt-20 md:pt-24 pb-16 flex flex-col bg-[#0b0c10] relative">
       {/* CSS-only Aurora Mesh Background */}
       <div className="aurora-mesh" aria-hidden="true" />
 
@@ -24,16 +24,16 @@ export default function ProjectsPage() {
         <div className="mb-8">
           <Link
             href="/#projects"
-            className="group inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-300 px-3 py-1.5 rounded-lg hover:bg-white/5"
+            className="group inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-300 px-3 py-1.5 rounded-lg hover:bg-indigo-500/10"
           >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300 text-red-400" />
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300 text-indigo-400" />
             <span className="font-medium text-sm">Back to Home</span>
           </Link>
         </div>
 
         {/* Page Title */}
         <div className="mb-12 md:mb-16">
-          <p className="text-red-400 text-xs font-bold uppercase tracking-[0.2em] mb-2">
+          <p className="text-indigo-400 text-xs font-bold uppercase tracking-[0.2em] mb-2">
             Selected Works
           </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">

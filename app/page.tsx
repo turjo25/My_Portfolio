@@ -8,7 +8,7 @@ import Projects from "@/components/Projects";
 import Education from "@/components/Education";
 import Footer from "@/components/Footer";
 
-// Dynamically import client-only overlays to reduce initial bundle size
+// Dynamically import client-only overlays to reduce initial bundle size & avoid SSR hydration mismatch
 const CommandPalette = dynamic(() => import("@/components/CommandPalette"), {
   ssr: false,
 });
@@ -18,16 +18,25 @@ const FloatingSocialDock = dynamic(
     ssr: false,
   }
 );
+const CustomCursorGlow = dynamic(
+  () => import("@/components/CustomCursorGlow"),
+  {
+    ssr: false,
+  }
+);
 
 /**
  * Main Portfolio Page (Server Component)
- * Clean RSC structure with code-split client interactivity
+ * Styled with Cyber Indigo & Violet Palette (#2)
  */
 export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden pt-16 md:pt-20 relative">
       {/* CSS-only Aurora Mesh Background */}
       <div className="aurora-mesh" aria-hidden="true" />
+
+      {/* Interactive Custom Cursor & Spotlight Glow */}
+      <CustomCursorGlow />
 
       {/* Navigation Bar */}
       <Navbar />

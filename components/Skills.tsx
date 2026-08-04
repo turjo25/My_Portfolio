@@ -52,7 +52,7 @@ export default function Skills() {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-14">
-          <p className="text-red-400 text-xs font-bold uppercase tracking-[0.2em] mb-2">
+          <p className="text-indigo-400 text-xs font-bold uppercase tracking-[0.2em] mb-2">
             Technical Expertise
           </p>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-heading">
@@ -76,24 +76,24 @@ export default function Skills() {
                 key={category.name}
                 variants={cardVariants}
                 whileHover={reduceMotion ? {} : { y: -4, scale: 1.015 }}
-                className="bento-card rounded-2xl p-6 border border-white/8 hover:border-red-500/35 transition-all duration-300 relative group overflow-hidden flex flex-col justify-between"
+                className="bento-card rounded-2xl p-6 border border-indigo-500/20 hover:border-indigo-500/45 transition-all duration-300 relative group overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-indigo-500/10"
               >
-                {/* Top Crimson Accent Line */}
+                {/* Top Indigo Accent Line */}
                 <div
-                  className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-300"
                   aria-hidden="true"
                 />
 
                 {/* Ambient Glow */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-br from-red-500/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   aria-hidden="true"
                 />
 
                 <div className="relative z-10">
                   {/* Category Header */}
                   <div className="flex items-center gap-3 mb-5">
-                    <div className="w-9 h-9 rounded-xl bg-red-500/10 border border-red-500/25 flex items-center justify-center text-red-400 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300 shrink-0">
+                    <div className="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300 shrink-0">
                       <IconComponent size={18} />
                     </div>
                     <h3 className="text-base font-bold text-gray-100 font-heading tracking-tight">

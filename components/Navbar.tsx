@@ -11,7 +11,7 @@ import TurjoLogo from "./TurjoLogo";
 
 /**
  * Navbar Component — floating pill style with active section detection,
- * animated underline indicator, glow CTA, and a slide-in mobile drawer.
+ * animated Cyber Indigo glow indicator, CTA button, and slide-in mobile drawer.
  */
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -87,16 +87,16 @@ export default function Navbar() {
         {/* Floating Navbar Pill Container */}
         <div
           className={cn(
-            "relative flex items-center justify-between w-full max-w-7xl rounded-full transition-all duration-300 px-4 md:px-8 glass",
-            scrolled ? "h-14 shadow-2xl shadow-red-500/10 border-red-500/20" : "h-16 md:h-20"
+            "relative flex items-center justify-between w-full max-w-7xl rounded-full transition-all duration-300 px-4 md:px-8 glass border-indigo-500/20 shadow-lg shadow-indigo-500/5",
+            scrolled ? "h-14 shadow-2xl shadow-indigo-500/15 border-indigo-500/30" : "h-16 md:h-20"
           )}
         >
-          {/* Subtle top Crimson glow line */}
+          {/* Top Cyber Indigo glow line */}
           <span
             className="pointer-events-none absolute top-0 left-[15%] right-[15%] h-px rounded-full"
             style={{
               background:
-                "linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.5), transparent)",
+                "linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.6), transparent)",
             }}
             aria-hidden="true"
           />
@@ -134,7 +134,12 @@ export default function Navbar() {
                   {(isActive || isHovered) && (
                     <motion.span
                       layoutId={reduceMotion ? undefined : "nav-pill"}
-                      className="absolute inset-0 rounded-xl bg-white/10 border border-white/12 -z-10"
+                      className={cn(
+                        "absolute inset-0 rounded-xl -z-10 transition-all duration-300",
+                        isActive
+                          ? "bg-gradient-to-r from-indigo-500/25 to-violet-600/20 border border-indigo-500/40 shadow-[0_0_15px_rgba(99,102,241,0.25)]"
+                          : "bg-indigo-500/10 border border-indigo-500/20"
+                      )}
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -147,20 +152,20 @@ export default function Navbar() {
           {/* CTA Hire Me Button */}
           <button
             onClick={() => handleNavClick("#contact")}
-            className="hidden md:flex items-center gap-2 flex-shrink-0 text-xs font-bold rounded-xl px-5 py-2.5 bg-red-600/15 text-red-300 hover:text-white border border-red-500/35 hover:border-red-500 hover:bg-red-600 transition-all duration-300 shadow-md hover:shadow-red-600/25 focus:outline-none uppercase tracking-wider"
+            className="hidden md:flex items-center gap-2 flex-shrink-0 text-xs font-bold rounded-xl px-5 py-2.5 bg-indigo-600/15 text-indigo-300 hover:text-white border border-indigo-500/35 hover:border-indigo-500 hover:bg-indigo-600 transition-all duration-300 shadow-md hover:shadow-indigo-600/30 focus:outline-none uppercase tracking-wider"
             aria-label="Hire me"
           >
-            <Zap size={14} className="text-red-400" />
+            <Zap size={14} className="text-indigo-400" />
             <span>Hire Me</span>
           </button>
 
           {/* Mobile Hamburger Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden ml-auto flex items-center justify-center w-10 h-10 rounded-xl glass border border-white/10 focus:outline-none"
+            className="md:hidden ml-auto flex items-center justify-center w-10 h-10 rounded-xl glass border border-indigo-500/20 focus:outline-none"
             aria-label="Toggle mobile menu"
           >
-            {mobileMenuOpen ? <X size={18} className="text-red-400" /> : <Menu size={18} className="text-gray-300" />}
+            {mobileMenuOpen ? <X size={18} className="text-indigo-400" /> : <Menu size={18} className="text-gray-300" />}
           </button>
         </div>
       </motion.nav>
@@ -177,7 +182,7 @@ export default function Navbar() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2 }}
-                  className="fixed inset-0 z-[100] bg-black/75 backdrop-blur-md"
+                  className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md"
                   onClick={() => setMobileMenuOpen(false)}
                 />
 
@@ -187,12 +192,12 @@ export default function Navbar() {
                   animate={{ x: 0 }}
                   exit={{ x: "100%" }}
                   transition={{ type: "spring", stiffness: 350, damping: 32 }}
-                  className="fixed top-0 right-0 z-[101] h-full w-[80%] max-w-xs flex flex-col pt-8 pb-10 px-6 bg-[#0a0d14] border-l border-white/10 shadow-2xl overflow-y-auto"
+                  className="fixed top-0 right-0 z-[101] h-full w-[80%] max-w-xs flex flex-col pt-8 pb-10 px-6 bg-[#0b0c10] border-l border-indigo-500/25 shadow-2xl overflow-y-auto"
                 >
                   {/* Close button */}
                   <button
                     onClick={() => setMobileMenuOpen(false)}
-                    className="self-end p-2 rounded-xl glass text-gray-400 hover:text-white transition-colors mb-6"
+                    className="self-end p-2 rounded-xl glass text-gray-400 hover:text-white border border-indigo-500/20 transition-colors mb-6"
                   >
                     <X size={18} />
                   </button>
@@ -215,12 +220,12 @@ export default function Navbar() {
                           className={cn(
                             "flex items-center justify-between w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200",
                             isActive
-                              ? "bg-red-500/15 border border-red-500/30 text-white"
-                              : "text-gray-400 hover:text-white hover:bg-white/5"
+                              ? "bg-gradient-to-r from-indigo-500/25 to-violet-600/15 border border-indigo-500/40 text-white shadow-lg shadow-indigo-500/10"
+                              : "text-gray-400 hover:text-white hover:bg-indigo-500/10"
                           )}
                         >
                           <span>{link.name}</span>
-                          {isActive && <span className="w-1.5 h-1.5 rounded-full bg-red-500" />}
+                          {isActive && <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shadow-[0_0_8px_#6366f1]" />}
                         </button>
                       );
                     })}
@@ -228,7 +233,7 @@ export default function Navbar() {
 
                   <button
                     onClick={() => handleNavClick("#contact")}
-                    className="mt-auto flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-red-600 text-white font-bold text-sm tracking-wider uppercase shadow-lg shadow-red-600/30"
+                    className="mt-auto flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-bold text-sm tracking-wider uppercase shadow-lg shadow-indigo-600/30"
                   >
                     <Zap size={14} />
                     <span>Hire Me</span>

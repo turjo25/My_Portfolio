@@ -127,7 +127,7 @@ export default function CommandPalette() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-0 bg-black/75 backdrop-blur-md z-[100]"
+            className="fixed inset-0 bg-black/80 backdrop-blur-md z-[100]"
             onClick={() => setIsOpen(false)}
           />
 
@@ -138,10 +138,10 @@ export default function CommandPalette() {
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="fixed top-1/4 left-1/2 -translate-x-1/2 w-full max-w-xl px-4 z-[101]"
           >
-            <div className="glass-strong rounded-3xl shadow-2xl border border-white/12 overflow-hidden bg-[#0a0d14]">
+            <div className="glass-strong rounded-3xl shadow-2xl border border-indigo-500/25 overflow-hidden bg-[#0b0c10]">
               {/* Search Bar */}
-              <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/8">
-                <Search size={18} className="text-red-400" />
+              <div className="flex items-center gap-3 px-4 py-3.5 border-b border-indigo-500/20">
+                <Search size={18} className="text-indigo-400" />
                 <input
                   type="text"
                   value={searchQuery}
@@ -152,7 +152,7 @@ export default function CommandPalette() {
                 />
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1 rounded-lg hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
+                  className="p-1 rounded-lg hover:bg-indigo-500/10 text-gray-400 hover:text-white transition-colors"
                 >
                   <X size={16} />
                 </button>
@@ -167,7 +167,7 @@ export default function CommandPalette() {
                 ) : (
                   Object.entries(groupedCommands).map(([category, cmds]) => (
                     <div key={category} className="mb-2">
-                      <div className="px-3 py-1.5 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+                      <div className="px-3 py-1.5 text-[10px] font-bold text-indigo-300/70 uppercase tracking-widest">
                         {category}
                       </div>
                       {cmds.map((command) => {
@@ -180,15 +180,15 @@ export default function CommandPalette() {
                             className={cn(
                               "w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors text-sm font-medium",
                               isSelected
-                                ? "bg-red-500/20 text-white border border-red-500/35"
-                                : "text-gray-300 hover:bg-white/5"
+                                ? "bg-indigo-500/20 text-white border border-indigo-500/40 shadow-sm shadow-indigo-500/10"
+                                : "text-gray-300 hover:bg-indigo-500/10"
                             )}
                           >
-                            <div className={cn("p-1.5 rounded-lg", isSelected ? "text-red-400" : "text-gray-400")}>
+                            <div className={cn("p-1.5 rounded-lg", isSelected ? "text-indigo-400" : "text-gray-400")}>
                               {command.icon}
                             </div>
                             <span className="flex-1 truncate">{command.name}</span>
-                            <ArrowRight size={14} className={cn("text-gray-500", isSelected && "text-red-400")} />
+                            <ArrowRight size={14} className={cn("text-gray-500", isSelected && "text-indigo-400")} />
                           </button>
                         );
                       })}
@@ -198,15 +198,15 @@ export default function CommandPalette() {
               </div>
 
               {/* Footer navigation guide */}
-              <div className="px-4 py-2.5 border-t border-white/8 flex items-center justify-between text-[11px] text-gray-500 font-medium">
+              <div className="px-4 py-2.5 border-t border-indigo-500/20 flex items-center justify-between text-[11px] text-gray-500 font-medium">
                 <span className="flex items-center gap-1">
-                  <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">↑↓</kbd> Navigate
+                  <kbd className="px-1.5 py-0.5 bg-indigo-500/10 border border-indigo-500/20 rounded text-[10px] text-indigo-300">↑↓</kbd> Navigate
                 </span>
                 <span className="flex items-center gap-1">
-                  <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">↵</kbd> Select
+                  <kbd className="px-1.5 py-0.5 bg-indigo-500/10 border border-indigo-500/20 rounded text-[10px] text-indigo-300">↵</kbd> Select
                 </span>
                 <span className="flex items-center gap-1">
-                  <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">Esc</kbd> Close
+                  <kbd className="px-1.5 py-0.5 bg-indigo-500/10 border border-indigo-500/20 rounded text-[10px] text-indigo-300">Esc</kbd> Close
                 </span>
               </div>
             </div>

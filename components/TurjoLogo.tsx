@@ -4,12 +4,7 @@ import { motion } from "framer-motion";
 
 /**
  * TurjoLogo — Creative animated SVG logo for the navbar.
- *
- * Design concept:
- *  • A hexagonal / shield-shaped badge mark on the left
- *  • "TURJO" wordmark on the right with a live gradient sweep
- *  • Blue → purple brand palette matching the site
- *  • Subtle glow + shimmer on hover
+ * Styled with Cyber Indigo & Violet brand palette.
  */
 export default function TurjoLogo() {
   return (
@@ -33,11 +28,11 @@ export default function TurjoLogo() {
         aria-hidden="true"
       >
         <defs>
-          {/* Main gradient fill */}
+          {/* Main gradient fill (Cyber Indigo & Violet) */}
           <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#fca5a5" />
-            <stop offset="50%" stopColor="#ef4444" />
-            <stop offset="100%" stopColor="#dc2626" />
+            <stop offset="0%" stopColor="#c7d2fe" />
+            <stop offset="50%" stopColor="#6366f1" />
+            <stop offset="100%" stopColor="#8b5cf6" />
           </linearGradient>
 
           {/* Glow filter */}
@@ -61,16 +56,16 @@ export default function TurjoLogo() {
           </clipPath>
         </defs>
 
-        {/* Hexagon border ring (slightly larger, semi-transparent) */}
+        {/* Hexagon border ring */}
         <path
           d="M19 2 L34 10.5 L34 27.5 L19 36 L4 27.5 L4 10.5 Z"
           stroke="url(#logo-grad)"
           strokeWidth="1.5"
-          fill="rgba(239,68,68,0.08)"
+          fill="rgba(99,102,241,0.12)"
           filter="url(#logo-glow)"
         />
 
-        {/* "T" letterform — bold, centered */}
+        {/* "T" letterform */}
         <text
           x="19"
           y="26"
@@ -84,7 +79,7 @@ export default function TurjoLogo() {
           T
         </text>
 
-        {/* Shimmer overlay (clips to hex) */}
+        {/* Shimmer overlay */}
         <motion.rect
           x="-38"
           y="0"
@@ -106,7 +101,7 @@ export default function TurjoLogo() {
           className="block text-2xl md:text-[1.65rem] font-extrabold tracking-[-0.04em] leading-none"
           style={{
             background:
-              "linear-gradient(135deg, #fca5a5 0%, #ef4444 40%, #dc2626 100%)",
+              "linear-gradient(135deg, #ffffff 0%, #c7d2fe 40%, #6366f1 80%, #8b5cf6 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -125,7 +120,7 @@ export default function TurjoLogo() {
           className="absolute bottom-0 left-0 h-[2px] rounded-full"
           style={{
             background:
-              "linear-gradient(90deg, #ef4444, #dc2626)",
+              "linear-gradient(90deg, #6366f1, #8b5cf6)",
           }}
           variants={{
             idle: { width: "0%", opacity: 0 },

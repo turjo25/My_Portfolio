@@ -45,14 +45,14 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
         ease: [0.16, 1, 0.3, 1],
       }}
       whileHover={reduceMotion ? {} : { y: -5 }}
-      className="group bento-card rounded-3xl border border-white/8 hover:border-red-500/35 transition-all duration-300 flex flex-col relative overflow-hidden h-full shadow-xl"
+      className="group bento-card rounded-3xl border border-indigo-500/20 hover:border-indigo-500/45 transition-all duration-300 flex flex-col relative overflow-hidden h-full shadow-xl hover:shadow-indigo-500/10"
     >
       {/* Dynamic Cursor Spotlight Beam */}
       {isHovered && !reduceMotion && (
         <div
           className="pointer-events-none absolute -inset-px rounded-3xl opacity-100 transition-opacity duration-300 z-30"
           style={{
-            background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(239, 68, 68, 0.15), transparent 80%)`,
+            background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(99, 102, 241, 0.18), transparent 80%)`,
           }}
         />
       )}
@@ -69,7 +69,7 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
 
       {/* Optimized Next/Image Screenshot Container */}
       {project.image && (
-        <div className="relative w-full aspect-[16/9] overflow-hidden z-10 shrink-0 bg-[#0a0d14]">
+        <div className="relative w-full aspect-[16/9] overflow-hidden z-10 shrink-0 bg-[#0b0c10]">
           <Image
             src={project.image}
             alt={project.title}
@@ -80,26 +80,26 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
             className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
           {/* Subtle bottom fade mask */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent opacity-90 pointer-events-none z-20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent opacity-90 pointer-events-none z-20" />
         </div>
       )}
 
       {/* Card Content */}
-      <div className="flex flex-col flex-grow p-6 sm:p-7 relative z-10 bg-[#0a0d14]/90">
+      <div className="flex flex-col flex-grow p-6 sm:p-7 relative z-10 bg-[#0b0c10]/90">
         
         {/* Title */}
-        <h3 className="text-2xl font-extrabold text-white font-heading mb-4 tracking-tight group-hover:text-red-400 transition-colors duration-300">
+        <h3 className="text-2xl font-extrabold text-white font-heading mb-4 tracking-tight group-hover:text-indigo-400 transition-colors duration-300">
           {project.title}
         </h3>
 
         {/* Tab Navigation (Overview / Features / Challenges) */}
-        <div className="flex items-center gap-2 mb-4 border-b border-white/8 pb-3 overflow-x-auto">
+        <div className="flex items-center gap-2 mb-4 border-b border-indigo-500/20 pb-3 overflow-x-auto">
           <button
             onClick={() => setActiveTab("overview")}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 whitespace-nowrap ${
               activeTab === "overview"
-                ? "bg-red-500/20 text-red-400 border border-red-500/35"
-                : "text-gray-400 hover:text-gray-200 hover:bg-white/5"
+                ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/40"
+                : "text-gray-400 hover:text-gray-200 hover:bg-indigo-500/10"
             }`}
           >
             <AlignLeft size={13} />
@@ -111,8 +111,8 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
               onClick={() => setActiveTab("features")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 whitespace-nowrap ${
                 activeTab === "features"
-                  ? "bg-red-500/20 text-red-400 border border-red-500/35"
-                  : "text-gray-400 hover:text-gray-200 hover:bg-white/5"
+                  ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/40"
+                  : "text-gray-400 hover:text-gray-200 hover:bg-indigo-500/10"
               }`}
             >
               <Zap size={13} />
@@ -125,8 +125,8 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
               onClick={() => setActiveTab("challenges")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 whitespace-nowrap ${
                 activeTab === "challenges"
-                  ? "bg-red-500/20 text-red-400 border border-red-500/35"
-                  : "text-gray-400 hover:text-gray-200 hover:bg-white/5"
+                  ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/40"
+                  : "text-gray-400 hover:text-gray-200 hover:bg-indigo-500/10"
               }`}
             >
               <Code size={13} />
@@ -162,7 +162,7 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
               >
                 {project.keyFeatures?.map((feature, i) => (
                   <li key={i} className="flex items-start gap-2 text-xs text-gray-300 leading-snug">
-                    <Zap size={13} className="text-red-400 mt-0.5 shrink-0" />
+                    <Zap size={13} className="text-indigo-400 mt-0.5 shrink-0" />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -180,7 +180,7 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
               >
                 {project.technicalChallenges?.map((challenge, i) => (
                   <li key={i} className="flex items-start gap-2 text-xs text-gray-300 leading-snug">
-                    <Code size={13} className="text-red-400 mt-0.5 shrink-0" />
+                    <Code size={13} className="text-indigo-400 mt-0.5 shrink-0" />
                     <span>{challenge}</span>
                   </li>
                 ))}
@@ -194,13 +194,13 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
           {project.techStack.slice(0, 4).map((tech) => (
             <span
               key={tech}
-              className="px-2.5 py-1 text-[11px] font-semibold rounded-md bg-white/5 border border-white/10 text-gray-300"
+              className="px-2.5 py-1 text-[11px] font-semibold rounded-md bg-indigo-500/10 border border-indigo-500/20 text-gray-300"
             >
               {tech}
             </span>
           ))}
           {project.techStack.length > 4 && (
-            <span className="px-2 py-1 text-[11px] font-bold text-red-400">
+            <span className="px-2 py-1 text-[11px] font-bold text-indigo-400">
               +{project.techStack.length - 4}
             </span>
           )}
@@ -213,7 +213,7 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
               href={project.liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 py-3 rounded-xl bg-red-600/15 hover:bg-red-600 border border-red-500/30 hover:border-red-500 text-red-300 hover:text-white transition-all duration-300 text-xs font-bold uppercase tracking-wider group/btn shadow-md hover:shadow-red-600/30"
+              className="flex items-center justify-center gap-2 py-3 rounded-xl bg-indigo-600/15 hover:bg-indigo-600 border border-indigo-500/30 hover:border-indigo-500 text-indigo-300 hover:text-white transition-all duration-300 text-xs font-bold uppercase tracking-wider group/btn shadow-md hover:shadow-indigo-600/30"
             >
               <ExternalLink size={15} className="group-hover/btn:scale-110 transition-transform" />
               <span>Live Demo</span>
@@ -223,7 +223,7 @@ export default function ProjectCard({ project, index, featured }: ProjectCardPro
             href={project.githubLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 py-3 rounded-xl glass hover:bg-white/10 border border-white/10 hover:border-white/25 text-gray-300 hover:text-white transition-all duration-300 text-xs font-bold uppercase tracking-wider group/btn"
+            className="flex items-center justify-center gap-2 py-3 rounded-xl glass hover:bg-indigo-500/15 border border-indigo-500/20 hover:border-indigo-500/40 text-gray-300 hover:text-white transition-all duration-300 text-xs font-bold uppercase tracking-wider group/btn"
           >
             <Github size={15} className="group-hover/btn:scale-110 transition-transform text-gray-400 group-hover/btn:text-white" />
             <span>Source</span>
